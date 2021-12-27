@@ -50,6 +50,10 @@ public class UserController {
         return RespBean.ok("");
     }
 
+    /**
+     *获取紧急电话号码
+     * @return
+     */
     @GetMapping("getEmergencyNumber")
     public RespBean getEmergencyNumber(){
         return RespBean.ok("sucess",userService.getEmergencyNumber());
