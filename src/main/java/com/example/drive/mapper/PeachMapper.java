@@ -1,10 +1,8 @@
 package com.example.drive.mapper;
 
-import com.example.drive.entity.Car;
+import com.example.drive.entity.Peach;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
 
 /**
  * <p>
@@ -12,10 +10,9 @@ import java.util.List;
  * </p>
  *
  * @author zhulu
- * @since 2021-12-22
+ * @since 2022-02-21
  */
 @Mapper
-public interface CarMapper extends BaseMapper<Car> {
-    List<Car> selecttest();
+public interface PeachMapper extends BaseMapper<Peach> {
 
 }

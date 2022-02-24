@@ -1,11 +1,16 @@
 package com.example.drive;
 
-import com.example.drive.entity.User;
-import com.example.drive.mapper.UserMapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.drive.entity.*;
+import com.example.drive.mapper.*;
+import com.example.drive.utills.FastDFSUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.io.File;
+import java.util.List;
 
 @SpringBootTest
 class DriveApplicationTests {
@@ -13,13 +18,25 @@ class DriveApplicationTests {
     UserMapper userMapper;
 
     @Autowired
+    PeachMapper peachMapper;
+    @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
+    TitleMapper titleMapper;
+    @Autowired
+    CarMapper carMapper;
+    @Autowired
+    DetailMapper detailMapper;
+    @Autowired
+    BrandMapper brandMapper;
     @Test
     void contextLoads() {
-        User u = new User();
-        u.setName("沈");
-        u.setPassword(passwordEncoder.encode("123"));
-        userMapper.insert(u);
+
+        File f =new File("D:\\homework\\pikaqiu.jpg");
+        String[] guoup = FastDFSUtil.upload(FastDFSUtil.getBytesByFile(f),"pikaqiu.jpg");
+
+        System.out.println("dddd");
+
     }
 
 }
