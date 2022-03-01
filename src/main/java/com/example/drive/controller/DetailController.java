@@ -29,7 +29,6 @@ import java.io.IOException;
  */
 @RestController
 @RequestMapping("/detail")
-@CrossOrigin
 public class DetailController {
     @Autowired
     DetailMapper detailMapper;

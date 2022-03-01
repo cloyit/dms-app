@@ -11,6 +11,9 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * <p>
  *  前端控制器
@@ -21,7 +24,6 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/peach")
-@CrossOrigin
 public class PeachController {
 
     @Autowired
@@ -39,6 +41,18 @@ public class PeachController {
         queryWrapper.eq("id",peachId);
         Peach p = peachMapper.selectOne(queryWrapper);
         return RespBean.ok("success",p);
+    }
+
+    /**
+     * 查询所有的桃子
+     * @return
+     */
+    @GetMapping
+    public RespBean getAllPeach(){
+
+        List<Peach> resultList = peachMapper.selectList(null);
+        return RespBean.ok("success",resultList);
+
     }
 
 }

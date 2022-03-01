@@ -29,7 +29,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/title")
-@CrossOrigin
 public class TitleController {
 
 

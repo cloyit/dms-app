@@ -15,6 +15,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -76,6 +79,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/temp");
     }
 
+
+    //在 protected void configure(HttpSecurity http)配置中添加下面这行代码：
+    //http.cors().configurationSource(CorsConfigurationSource());
+
+    //配置跨域访问资源
+    private CorsConfigurationSource CorsConfigurationSource() {
+        CorsConfigurationSource source =   new UrlBasedCorsConfigurationSource();
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.addAllowedOrigin("*");	//同源配置，*表示任何请求都视为同源，若需指定ip和端口可以改为如“localhost：8080”，多个以“，”分隔；
+        corsConfiguration.addAllowedHeader("*");//header，允许哪些header，本案中使用的是token，此处可将*替换为token；
+        corsConfiguration.addAllowedMethod("*");	//允许的请求方法，PSOT、GET等
+        ((UrlBasedCorsConfigurationSource) source).registerCorsConfiguration("/**",corsConfiguration); //配置允许跨域访问的url
+        return source;
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //拦截设置
@@ -95,7 +113,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.anyRequest().access("@rbacauthorityservice.hasPermission(request,authentication)") // RBAC 动态 url 认证
                 //链式编程，and返回的就是http
                 .and()
-                .cors()
+                .cors().configurationSource(CorsConfigurationSource())
                 //跨域攻击不可用
                 .and()
                 //加入过滤器，后面的参数为把自己的过滤器放在哪里
