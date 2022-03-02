@@ -2,6 +2,7 @@ package com.example.drive.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.drive.entity.Peach;
 import com.example.drive.mapper.PeachMapper;
 import com.example.drive.response.RespBean;
@@ -28,6 +29,8 @@ public class PeachController {
 
     @Autowired
     PeachMapper peachMapper;
+    @Autowired
+    IPeachService iPeachService;
     //录入桃子
     @PostMapping("updatePeach")
     public RespBean updatePeach(Peach p){
@@ -54,5 +57,25 @@ public class PeachController {
         return RespBean.ok("success",resultList);
 
     }
+
+    /**
+     * 分页查询桃子
+     * @param currentPage
+     * @param size
+     * @return
+     */
+    @GetMapping("getPeachLimit")
+    public RespBean getPeachLimit(Integer currentPage,Integer size){
+
+        Page<Peach> producePage = new Page<>(currentPage,size);
+        Page<Peach> page = iPeachService.page(producePage);
+        System.out.println(producePage == page);
+        List<Peach> peaches = page.getRecords();
+        for (Peach record : peaches) {
+            System.out.println(record);
+        }
+        return RespBean.ok("success and peaches are",peaches);
+    }
+
 
 }

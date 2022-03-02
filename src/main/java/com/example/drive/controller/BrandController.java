@@ -1,6 +1,8 @@
 package com.example.drive.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.api.R;
 import com.example.drive.entity.Brand;
 import com.example.drive.entity.Title;
 import com.example.drive.mapper.BrandMapper;
@@ -8,11 +10,7 @@ import com.example.drive.mapper.DetailMapper;
 import com.example.drive.mapper.TitleMapper;
 import com.example.drive.response.RespBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +18,7 @@ import java.util.List;
  * <p>
  *  前端控制器
  * </p>
+ *品牌信息接口
  *
  * @author zhulu
  * @since 2022-02-23
@@ -31,35 +30,78 @@ public class BrandController {
 
     @Autowired
     private BrandMapper brandMapper;
-    @Autowired
-    private DetailMapper detailMapper;
 
     /**
-     *  获取所有的brand
-     *  1 获取所有的title, 根据每一个title 获取detail
-     * @return
-     */
-    @PostMapping("getAllBrand")
-    public RespBean getAllBrand(){
-
-        List<Brand> brands = brandMapper.selectAllBrand();
-        //查出所有的detail id 组合成title
-        for(int i =0 ;i< brands.size();i++){
-            brands.get(i).setDetails(detailMapper.getDetailsByBId(i+1));
-        }
-        return RespBean.ok("brand is ",brands);
-    }
-
-    /**
-     * 上传brand
+     * 上传Brand
      * @param brand
      * @return
      */
-    @PostMapping("addBrand")
-    public RespBean addBrand(Brand brand){
-
+    @PostMapping("updateBrand")
+    public RespBean updateBrand(@RequestBody Brand brand){
         brandMapper.insert(brand);
-        return RespBean.ok("success",brand);
+        return RespBean.ok("success and brand is",brand);
+    }
+
+    /**
+     * 获取当前所有的Brand
+     * @return
+     */
+    @GetMapping("getAllBrand")
+    public RespBean getAllBrand(){
+        return RespBean.ok("success",brandMapper.selectList(null));
+    }
+
+    /**
+     * 根据名称修改品牌信息
+     * 提供名字就行，不需要写id
+     * @param
+     * @return
+     */
+    @PostMapping("updateBrandByName")
+    public RespBean updateBrandByName(@RequestBody Brand brand){
+        //先根据name获取id
+        QueryWrapper<Brand> queryWrapper = new QueryWrapper<Brand>();
+        queryWrapper.eq("name",brand.getName());
+        Brand customaryBrand =brandMapper.selectOne(queryWrapper);
+        //设置brandid
+        if(customaryBrand==null){
+            return RespBean.error("error because brand name is not exist");
+        }
+        brand.setBrandId(customaryBrand.getBrandId());
+        brandMapper.update(brand,queryWrapper);
+        return RespBean.ok("success and new brand is",brand);
+    }
+
+    /**
+     * 根据name 删除
+     * @param name
+     * @return
+     */
+    @PostMapping("deleteBrandById")
+    public RespBean deleteBrandById(String name){
+        QueryWrapper<Brand> queryWrapper = new QueryWrapper<Brand>();
+        queryWrapper.eq("name",name);
+        Brand brand = brandMapper.selectOne(queryWrapper);
+        if(brand==null){
+            //name is not exist
+            return RespBean.error("error because name is not exist");
+        }
+        brandMapper.delete(queryWrapper);
+        return RespBean.ok("delete success");
+
+    }
+
+    /**
+     * 根据名字模糊查询
+     * @param LikeName
+     * @return
+     */
+    @PostMapping("selectBrandLike")
+    public RespBean selectBrandLike(String LikeName){
+        QueryWrapper<Brand> queryWrapper = new QueryWrapper<Brand>();
+        queryWrapper.like("name",LikeName);
+        return RespBean.ok("success",brandMapper.selectOne(queryWrapper));
+
     }
 
 

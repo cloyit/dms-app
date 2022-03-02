@@ -39,12 +39,12 @@ public class TitleController {
     private DetailMapper detailMapper;
 
     /**
-     *  获取所有的detail
+     *
      *  1 获取所有的title, 根据每一个title 获取detail
      * @return
      */
-    @PostMapping("getAllDetail")
-    public RespBean getAllDetail(){
+    @PostMapping("getAllTitle")
+    public RespBean getAllTitle(){
 
         List<Title> titles = titleMapper.selectAllTitle();
         //查出所有的detail id 组合成title
@@ -54,10 +54,55 @@ public class TitleController {
         return RespBean.ok("title is",titles);
     }
 
+    /**
+     * 上传title
+     * @param title
+     * @return
+     */
     @PostMapping("uploadTitle")
     public RespBean uploadTitle(Title title){
         titleMapper.insert(title);
         return RespBean.ok("success",title);
 
     }
+
+    /**
+     * 根据Id删除title
+     * @param id
+     * @return
+     */
+    @PostMapping("deleteTitle")
+    public RespBean deleteTitle(Integer id){
+        //查询id是否合法
+        List<Title> titles = titleMapper.selectList(null);
+        if(id>titles.get(titles.size()-1).getTitleId()){
+            return RespBean.error("id is out of boundry",null);
+        }
+        QueryWrapper<Title> queryWrapper = new QueryWrapper<Title>();
+        queryWrapper.eq("titleId",id);
+        titleMapper.delete(queryWrapper);
+        return RespBean.ok("success delete",id);
+    }
+
+    /**
+     * 更新title
+     * @param
+     * @return
+     */
+    public RespBean updateTitle(Title title){
+        //查看title id 是否合法
+        List<Title> titles = titleMapper.selectList(null);
+        QueryWrapper<Title> queryWrapper = new QueryWrapper<Title>();
+        queryWrapper.eq("titleId",title.getTitleId());
+        for(Title t:titles){
+            if(t.getTitleId().equals(title.getTitleId())){
+                // title id 合法
+                titleMapper.update(title,queryWrapper);
+                return RespBean.ok("success and titile is",title);
+            }
+        }
+        return RespBean.error("error not found title id please insert");
+    }
+
+
 }

@@ -3,8 +3,6 @@ package com.example.drive.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
-import java.util.List;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,21 +12,22 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author zhulu
- * @since 2022-02-23
+ * @since 2022-03-02
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Brand implements Serializable {
+public class Picture implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "brand_id", type = IdType.AUTO)
-    private Integer brandId;
+    @TableId(value = "picture_id", type = IdType.AUTO)
+    private Integer pictureId;
 
-    private String name;
+    private String url;
 
-    //存储html页面
-    private String content;
+    private String href;
+
+    private String description;
 
 
 }

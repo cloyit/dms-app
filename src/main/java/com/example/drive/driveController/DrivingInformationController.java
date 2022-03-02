@@ -1,4 +1,4 @@
-package com.example.drive.controller;
+package com.example.drive.driveController;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;

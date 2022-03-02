@@ -1,4 +1,4 @@
-package com.example.drive.controller;
+package com.example.drive.driveController;
 
 
 import com.example.drive.entity.Car;
