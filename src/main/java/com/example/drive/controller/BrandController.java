@@ -36,7 +36,7 @@ public class BrandController {
      * @param brand
      * @return
      */
-    @PostMapping("updateBrand")
+    @PostMapping("uploadBrand")
     public RespBean updateBrand(@RequestBody Brand brand){
         brandMapper.insert(brand);
         return RespBean.ok("success and brand is",brand);
@@ -57,38 +57,30 @@ public class BrandController {
      * @param
      * @return
      */
-    @PostMapping("updateBrandByName")
+    @PostMapping("updateBrandById")
     public RespBean updateBrandByName(@RequestBody Brand brand){
         //先根据name获取id
         QueryWrapper<Brand> queryWrapper = new QueryWrapper<Brand>();
-        queryWrapper.eq("name",brand.getName());
-        Brand customaryBrand =brandMapper.selectOne(queryWrapper);
-        //设置brandid
-        if(customaryBrand==null){
-            return RespBean.error("error because brand name is not exist");
-        }
-        brand.setBrandId(customaryBrand.getBrandId());
+        queryWrapper.eq("brandId",brand.getBrandId());
         brandMapper.update(brand,queryWrapper);
         return RespBean.ok("success and new brand is",brand);
     }
 
     /**
      * 根据name 删除
-     * @param name
+     * @param Ids
      * @return
      */
-    @PostMapping("deleteBrandById")
-    public RespBean deleteBrandById(String name){
-        QueryWrapper<Brand> queryWrapper = new QueryWrapper<Brand>();
-        queryWrapper.eq("name",name);
-        Brand brand = brandMapper.selectOne(queryWrapper);
-        if(brand==null){
-            //name is not exist
-            return RespBean.error("error because name is not exist");
+    @PostMapping("deleteBrandByIds")
+    public RespBean deleteBrandById(List<Integer> Ids){
+        //先判断有无数据
+        if(!Ids.isEmpty()&&Ids.size()==0){
+            return RespBean.error("empty");
         }
+        QueryWrapper<Brand> queryWrapper = new QueryWrapper<Brand>();
+        queryWrapper.in("brandId",Ids);
         brandMapper.delete(queryWrapper);
-        return RespBean.ok("delete success");
-
+        return RespBean.ok("Batch delete success");
     }
 
     /**

@@ -3,6 +3,7 @@ package com.example.drive.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.drive.entity.Brand;
 import com.example.drive.entity.Peach;
 import com.example.drive.mapper.PeachMapper;
 import com.example.drive.response.RespBean;
@@ -32,7 +33,7 @@ public class PeachController {
     @Autowired
     IPeachService iPeachService;
     //录入桃子
-    @PostMapping("updatePeach")
+    @PostMapping("uploadPeach")
     public RespBean updatePeach(Peach p){
         peachMapper.insert(p);
         return RespBean.ok("successs",p.getId());
@@ -50,9 +51,8 @@ public class PeachController {
      * 查询所有的桃子
      * @return
      */
-    @GetMapping
+    @GetMapping("getAllPeach")
     public RespBean getAllPeach(){
-
         List<Peach> resultList = peachMapper.selectList(null);
         return RespBean.ok("success",resultList);
 
@@ -75,6 +75,23 @@ public class PeachController {
             System.out.println(record);
         }
         return RespBean.ok("success and peaches are",peaches);
+    }
+
+    /**
+     * 根据id 批量删除桃子
+     * @param Ids
+     * @return
+     */
+    @PostMapping("deleteBrandByIds")
+    public RespBean deletePeachById(List<Integer> Ids){
+        //先判断有无数据
+        if(!Ids.isEmpty()&&Ids.size()==0){
+            return RespBean.error("empty");
+        }
+        QueryWrapper<Peach> queryWrapper = new QueryWrapper<Peach>();
+        queryWrapper.in("id",Ids);
+        peachMapper.delete(queryWrapper);
+        return RespBean.ok("Batch delete success");
     }
 
 

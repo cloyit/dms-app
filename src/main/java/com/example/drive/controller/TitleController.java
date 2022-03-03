@@ -3,6 +3,7 @@ package com.example.drive.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.drive.entity.Detail;
+import com.example.drive.entity.Peach;
 import com.example.drive.entity.Title;
 import com.example.drive.mapper.DetailMapper;
 import com.example.drive.mapper.TitleMapper;
@@ -66,29 +67,32 @@ public class TitleController {
 
     }
 
-    /**
-     * 根据Id删除title
-     * @param id
-     * @return
-     */
-    @PostMapping("deleteTitle")
-    public RespBean deleteTitle(Integer id){
-        //查询id是否合法
-        List<Title> titles = titleMapper.selectList(null);
-        if(id>titles.get(titles.size()-1).getTitleId()){
-            return RespBean.error("id is out of boundry",null);
-        }
-        QueryWrapper<Title> queryWrapper = new QueryWrapper<Title>();
-        queryWrapper.eq("titleId",id);
-        titleMapper.delete(queryWrapper);
-        return RespBean.ok("success delete",id);
-    }
+
 
     /**
-     * 更新title
+     * 根据id 批量删除title
+     * @param Ids
+     * @return
+     */
+    @PostMapping("deleteBrandByIds")
+    public RespBean deletePeachById(List<Integer> Ids){
+        //先判断有无数据
+        if(!Ids.isEmpty()&&Ids.size()==0){
+            return RespBean.error("empty");
+        }
+        QueryWrapper<Title> queryWrapper = new QueryWrapper<Title>();
+        queryWrapper.in("titleId",Ids);
+        titleMapper.delete(queryWrapper);
+        return RespBean.ok("Batch delete success");
+    }
+
+
+    /**
+     * 根据id 更新title
      * @param
      * @return
      */
+    @PostMapping("updateTitle")
     public RespBean updateTitle(Title title){
         //查看title id 是否合法
         List<Title> titles = titleMapper.selectList(null);
