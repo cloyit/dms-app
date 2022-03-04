@@ -99,5 +99,17 @@ public class TitleController {
 
     }
 
+    /**
+     * 根据名称模糊查询title
+     * @param LikeName
+     * @return
+     */
+    @GetMapping("getTitleByLike")
+    public RespBean getTitleByLike(String LikeName){
+        QueryWrapper<Title> queryWrapper = new QueryWrapper<Title>();
+        queryWrapper.like("name",LikeName);
+        return RespBean.ok("success",titleMapper.selectList(queryWrapper));
+    }
+
 
 }

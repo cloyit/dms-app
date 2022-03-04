@@ -11,9 +11,11 @@ import com.example.drive.service.IPeachService;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -34,7 +36,7 @@ public class PeachController {
     IPeachService iPeachService;
     //录入桃子
     @PostMapping("uploadPeach")
-    public RespBean updatePeach(@RequestBody Peach p){
+    public RespBean uploadPeach(@RequestBody Peach p){
         peachMapper.insert(p);
         return RespBean.ok("successs",p.getId());
     }
@@ -67,12 +69,26 @@ public class PeachController {
     @GetMapping("getPeachLimit")
     public RespBean getPeachLimit(Integer currentPage,Integer size){
 
+        //使用原生的sql即可
         //先查询所有的，然后再组装就好
-        List<Peach> peaches = peachMapper.selectList(null);
+        //先查询总数
         int begin = (currentPage-1)*size;
-        int end = begin+size;
-        List<Peach> resultList = peaches.subList(begin, end);
-       return RespBean.ok("success and peaches are",resultList);
+        int count = peachMapper.selectCount(null);
+        List<Peach> peaches = null;
+        peachMapper.getPeachLimit(begin,size);
+        if((currentPage-1)*size>count){
+            //说明没有那么多页数
+            return RespBean.error("no much page are total is"+count);
+        }else if(currentPage*size>count){
+            //说明页数够但没有那么多数据
+            //更新size
+            size = count - (currentPage-1)*size;
+        }
+        peaches= peachMapper.getPeachLimit(begin,size);
+        HashMap<String,Object> result = new HashMap<String,Object>();
+        result.put("peaches",peaches);
+        result.put("total",count);
+       return RespBean.ok("success and peaches are total is"+count,result);
     }
 
     /**
@@ -90,6 +106,31 @@ public class PeachController {
         queryWrapper.in("id",Ids);
         peachMapper.delete(queryWrapper);
         return RespBean.ok("Batch delete success");
+    }
+
+    /**
+     * 更新桃子
+     * @param peach
+     * @return
+     */
+    @PostMapping("updatePeach")
+    public RespBean updatePeach(@RequestBody Peach peach){
+        QueryWrapper<Peach> queryWrapper = new QueryWrapper<Peach>();
+        queryWrapper.eq("id",peach.getId());
+        peachMapper.update(peach,queryWrapper);
+        return RespBean.ok("update success and peach is",peach);
+    }
+
+    /**
+     * 根据名称模糊查询桃子
+     * @param LikeName
+     * @return
+     */
+    @GetMapping("getPeachByLike")
+    public RespBean getPeachByLike(String LikeName){
+        QueryWrapper<Peach> queryWrapper = new QueryWrapper<Peach>();
+        queryWrapper.like("name",LikeName);
+        return RespBean.ok("success",peachMapper.selectList(queryWrapper));
     }
 
 

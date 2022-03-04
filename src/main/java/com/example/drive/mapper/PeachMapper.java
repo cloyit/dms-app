@@ -3,6 +3,9 @@ package com.example.drive.mapper;
 import com.example.drive.entity.Peach;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +18,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PeachMapper extends BaseMapper<Peach> {
 
+    List<Peach> getPeachLimit(@Param("begin") int begin,@Param("size") int size);
 }
