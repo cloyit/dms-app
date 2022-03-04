@@ -11,11 +11,7 @@ import com.example.drive.response.RespBean;
 import com.example.drive.service.IDetailService;
 import com.example.drive.service.ITitleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +57,7 @@ public class TitleController {
      * @return
      */
     @PostMapping("uploadTitle")
-    public RespBean uploadTitle(Title title){
+    public RespBean uploadTitle(@RequestBody Title title){
         titleMapper.insert(title);
         return RespBean.ok("success",title);
 
@@ -74,8 +70,8 @@ public class TitleController {
      * @param Ids
      * @return
      */
-    @PostMapping("deleteBrandByIds")
-    public RespBean deletePeachById(List<Integer> Ids){
+    @PostMapping("deleteTitleByIds")
+    public RespBean deleteTitleByIds(@RequestBody List<Integer> Ids){
         //先判断有无数据
         if(!Ids.isEmpty()&&Ids.size()==0){
             return RespBean.error("empty");
@@ -93,19 +89,14 @@ public class TitleController {
      * @return
      */
     @PostMapping("updateTitle")
-    public RespBean updateTitle(Title title){
-        //查看title id 是否合法
-        List<Title> titles = titleMapper.selectList(null);
+    public RespBean updateTitle(@RequestBody Title title){
+
+
         QueryWrapper<Title> queryWrapper = new QueryWrapper<Title>();
-        queryWrapper.eq("titleId",title.getTitleId());
-        for(Title t:titles){
-            if(t.getTitleId().equals(title.getTitleId())){
-                // title id 合法
-                titleMapper.update(title,queryWrapper);
-                return RespBean.ok("success and titile is",title);
-            }
-        }
-        return RespBean.error("error not found title id please insert");
+        queryWrapper.eq("title_id",title.getTitleId());
+        titleMapper.update(title,queryWrapper);
+        return RespBean.ok("success and titile is",title);
+
     }
 
 

@@ -29,8 +29,8 @@ public class PictureController {
     @Autowired
     PictureMapper pictureMapper;
 
-    @PostMapping("updataPicture")
-    public RespBean updataPicture(@RequestBody  MultipartFile file, @RequestBody String description){
+    @PostMapping("uploadPicture")
+    public RespBean uploadPicture(MultipartFile file,String description){
         Picture picture = new Picture();
         picture.setDescription(description);
 
@@ -43,7 +43,7 @@ public class PictureController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        picture.setHref("http://47.102.99.215/"+result[0]+"/"+result[1]);
+        picture.setUrl("http://47.102.99.215/"+result[0]+"/"+result[1]);
         picture.setHref("http://47.102.99.215/"+result[0]+"/"+result[1]);
 
         pictureMapper.insert(picture);

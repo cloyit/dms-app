@@ -34,7 +34,7 @@ public class PeachController {
     IPeachService iPeachService;
     //录入桃子
     @PostMapping("uploadPeach")
-    public RespBean updatePeach(Peach p){
+    public RespBean updatePeach(@RequestBody Peach p){
         peachMapper.insert(p);
         return RespBean.ok("successs",p.getId());
     }
@@ -67,14 +67,12 @@ public class PeachController {
     @GetMapping("getPeachLimit")
     public RespBean getPeachLimit(Integer currentPage,Integer size){
 
-        Page<Peach> producePage = new Page<>(currentPage,size);
-        Page<Peach> page = iPeachService.page(producePage);
-        System.out.println(producePage == page);
-        List<Peach> peaches = page.getRecords();
-        for (Peach record : peaches) {
-            System.out.println(record);
-        }
-        return RespBean.ok("success and peaches are",peaches);
+        //先查询所有的，然后再组装就好
+        List<Peach> peaches = peachMapper.selectList(null);
+        int begin = (currentPage-1)*size;
+        int end = begin+size;
+        List<Peach> resultList = peaches.subList(begin, end);
+       return RespBean.ok("success and peaches are",resultList);
     }
 
     /**
@@ -83,7 +81,7 @@ public class PeachController {
      * @return
      */
     @PostMapping("deleteBrandByIds")
-    public RespBean deletePeachById(List<Integer> Ids){
+    public RespBean deletePeachById(@RequestBody List<Integer> Ids){
         //先判断有无数据
         if(!Ids.isEmpty()&&Ids.size()==0){
             return RespBean.error("empty");
