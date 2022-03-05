@@ -113,9 +113,8 @@ public class TitleController {
      */
     @GetMapping("getTitleByLike")
     public RespBean getTitleByLike(String LikeName){
-        QueryWrapper<Title> queryWrapper = new QueryWrapper<Title>();
-        queryWrapper.like("name",LikeName);
-        return RespBean.ok("success",titleMapper.selectList(queryWrapper));
+
+        return RespBean.ok("success",titleMapper.getTitleLikeName(LikeName));
     }
     /**
      * 分页查询title

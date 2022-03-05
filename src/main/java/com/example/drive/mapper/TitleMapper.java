@@ -21,4 +21,5 @@ public interface TitleMapper extends BaseMapper<Title> {
    List<Title> selectAllTitle();
    List<Title> getTitleLimit(@Param("begin") int begin, @Param("size") int size);
    Title getTitleById(@Param("id") int id);
+   List<Title> getTitleLikeName(@Param("name") String name);
 }

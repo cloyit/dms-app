@@ -40,7 +40,7 @@ public class DetailController {
      * @return
      */
     @PostMapping("uploadDetail")
-    public RespBean uploadDetail(Detail detail){
+    public RespBean uploadDetail(@RequestBody Detail detail){
         detailMapper.insert(detail);
         return RespBean.ok("success",detail);
     }

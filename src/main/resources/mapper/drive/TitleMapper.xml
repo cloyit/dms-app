@@ -16,6 +16,11 @@
     </select>
 
     <select id="getTitleById" resultMap="BaseResultMap">
+
         SELECT * FROM title WHERE title_id = #{id};
+    </select>
+    <select id="getTitleLikeName" resultMap="BaseResultMap">
+
+        SELECT * FROM title  WHERE name LIKE '%${name}%' ;
     </select>
 </mapper>
