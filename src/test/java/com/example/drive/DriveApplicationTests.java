@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootTest
@@ -32,10 +33,17 @@ class DriveApplicationTests {
     @Test
     void contextLoads() {
 
-        File f =new File("D:\\homework\\pikaqiu.jpg");
-        String[] guoup = FastDFSUtil.upload(FastDFSUtil.getBytesByFile(f),"pikaqiu.jpg");
-
-        System.out.println("dddd");
+        LocalDateTime localDateTime = LocalDateTime.now();
+        //制作一些数据
+        Peach peach = new Peach();
+        peach.setName("恩施圣桃子");
+        peach.setDescription("很大很大的桃子");
+        peach.setPick(localDateTime);
+        peach.setAddress("武汉理工大学");
+        peach.setList(localDateTime);
+        for (int i=0;i<20;i++){
+            peachMapper.insert(peach);
+        }
 
     }
 

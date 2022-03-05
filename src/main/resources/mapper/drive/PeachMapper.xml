@@ -8,7 +8,7 @@
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="address" jdbcType="INTEGER" property="address"/>
         <result column="list" jdbcType="VARCHAR" property="list"/>
-        <result column="pick" jdbcType="INTEGER" property="pick"/>
+        <result column="pick" jdbcType="VARCHAR" property="pick"/>
         <result column="description" jdbcType="VARCHAR" property="description"/>
     </resultMap>
 

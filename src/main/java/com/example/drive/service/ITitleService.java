@@ -13,5 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ITitleService extends IService<Title> {
 
-
+    Title getTitleById(int id);
 }

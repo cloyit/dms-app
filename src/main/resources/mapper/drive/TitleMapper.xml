@@ -11,4 +11,11 @@
         SELECT * FROM title t;
     </select>
 
+    <select id="getTitleLimit" resultMap="BaseResultMap">
+        SELECT * FROM title LIMIT #{size} OFFSET #{begin};
+    </select>
+
+    <select id="getTitleById" resultMap="BaseResultMap">
+        SELECT * FROM title WHERE title_id = #{id};
+    </select>
 </mapper>

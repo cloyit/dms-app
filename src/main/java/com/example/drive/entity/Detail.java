@@ -23,13 +23,9 @@ public class Detail implements Serializable {
     @TableId(value = "detail_id", type = IdType.AUTO)
     private Integer detailId;
 
-    private String type;
-
     private Integer masterId;
 
-    private String description;
-
-    private String pictureUrl;
+    private String content;
 
 
 }

@@ -6,10 +6,15 @@
     <resultMap id="BaseResultMap" type="com.example.drive.entity.Brand">
         <result column="brand_id" jdbcType="INTEGER" property="brandId"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
     </resultMap>
 
     <select id="selectAllBrand" resultMap="BaseResultMap">
         SELECT * FROM brand;
+    </select>
+
+    <select id="getBrandLimit" resultMap="BaseResultMap">
+        SELECT * FROM brand LIMIT #{size} OFFSET #{begin};
     </select>
 
 </mapper>

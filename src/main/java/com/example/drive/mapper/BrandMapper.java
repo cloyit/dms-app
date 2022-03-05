@@ -4,6 +4,7 @@ import com.example.drive.entity.Brand;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.drive.entity.Title;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,4 +19,5 @@ import java.util.List;
 @Mapper
 public interface BrandMapper extends BaseMapper<Brand> {
     List<Brand> selectAllBrand();
+    List<Brand> getBrandLimit(@Param("begin") int begin, @Param("size") int size);
 }

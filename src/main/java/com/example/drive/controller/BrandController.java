@@ -4,6 +4,7 @@ package com.example.drive.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.example.drive.entity.Brand;
+import com.example.drive.entity.Peach;
 import com.example.drive.entity.Title;
 import com.example.drive.mapper.BrandMapper;
 import com.example.drive.mapper.DetailMapper;
@@ -12,6 +13,7 @@ import com.example.drive.response.RespBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -104,6 +106,37 @@ public class BrandController {
         queryWrapper.like("name",LikeName);
         return RespBean.ok("success",brandMapper.selectList(queryWrapper));
 
+    }
+
+    /**
+     * 分页查询品牌信息
+     * @param currentPage
+     * @param size
+     * @return
+     */
+    @GetMapping("getBrandLimit")
+    public RespBean getBrandLimit(Integer currentPage,Integer size){
+
+        //使用原生的sql即可
+        //先查询所有的，然后再组装就好
+        //先查询总数
+        int begin = (currentPage-1)*size;
+        int count = brandMapper.selectCount(null);
+        List<Brand> brands = null;
+        brandMapper.getBrandLimit(begin,size);
+        if((currentPage-1)*size>count){
+            //说明没有那么多页数
+            return RespBean.error("no much page are total is"+count);
+        }else if(currentPage*size>count){
+            //说明页数够但没有那么多数据
+            //更新size
+            size = count - (currentPage-1)*size;
+        }
+        brands= brandMapper.getBrandLimit(begin,size);
+        HashMap<String,Object> result = new HashMap<String,Object>();
+        result.put("peaches",brands);
+        result.put("total",count);
+        return RespBean.ok("success and peaches are total is"+count,result);
     }
 
 
