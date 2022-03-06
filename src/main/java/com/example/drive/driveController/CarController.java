@@ -1,16 +1,14 @@
 package com.example.drive.driveController;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.drive.entity.Brand;
 import com.example.drive.entity.Car;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.ICarService;
 import com.example.drive.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,23 +33,40 @@ public class CarController {
      * @param car
      * @return
      */
-    @PostMapping
+    @PostMapping("addCar")
     public RespBean addCar(@RequestBody Car car) {
+        //增加master_id
+        Long uid = iUserService.getUid();
+        car.setMasterId(uid);
         iCarService.addCar(car);
-        return RespBean.ok("success");
+        return RespBean.ok("success and car is ",car);
     }
 
     /**
      * 根据token 获取所有的车
      * @return
      */
-    @PostMapping("getAllCar")
+    @GetMapping("getAllCar")
     public RespBean getAllCar() {
         Long uid = iUserService.getUid();
         List<Car> cars = iCarService.getAllCarByUid(uid);
         return RespBean.ok("success and all cars are",cars);
     }
 
+    /**
+     * 根据car id 删除
+     * @param Ids
+     * @return
+     */
+    @PostMapping("deleteCarByIds")
+    public RespBean deleteBrandById(@RequestBody List<Integer> Ids){
+        //先判断有无数据
+        if(!Ids.isEmpty()&&Ids.size()==0){
+            return RespBean.error("empty");
+        }
+       iCarService.deleteCar(Ids);
+        return RespBean.ok("Batch delete success");
+    }
 
 
 }

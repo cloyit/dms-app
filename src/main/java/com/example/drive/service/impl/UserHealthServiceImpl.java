@@ -45,6 +45,7 @@ public class UserHealthServiceImpl extends ServiceImpl<UserHealthMapper, UserHea
 
     @Override
     public void uploadHealth(UserHealth userHealth) {
+
         userHealthMapper.insert(userHealth);
     }
 

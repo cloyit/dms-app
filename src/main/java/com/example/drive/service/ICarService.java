@@ -16,6 +16,7 @@ import java.util.List;
 public interface ICarService extends IService<Car> {
      void addCar(Car car);
      List<Car> getAllCarByUid(Long uid);
+     void deleteCar(List<Integer> ids);
 
 
 }

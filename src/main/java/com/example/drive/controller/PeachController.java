@@ -41,11 +41,18 @@ public class PeachController {
         return RespBean.ok("successs",p.getId());
     }
 
+    /**
+     * 根据id查询桃子
+     * @param peachId
+     * @return
+     */
     @GetMapping("getPeach")
     public RespBean getPeach(@RequestParam("peachId") Integer peachId){
         QueryWrapper<Peach> queryWrapper = new QueryWrapper<Peach>();
         queryWrapper.eq("id",peachId);
         Peach p = peachMapper.selectOne(queryWrapper);
+        p.setCnt(p.getCnt()+1);
+        peachMapper.update(p,queryWrapper);
         return RespBean.ok("success",p);
     }
 

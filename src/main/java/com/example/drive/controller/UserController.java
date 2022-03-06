@@ -33,7 +33,7 @@ public class UserController {
     @PostMapping("/register")
     public RespBean register(@RequestBody User u){
         userService.register(u);
-        return RespBean.ok("success");
+        return RespBean.ok("success It is suggested to improve personal information. The information that can be improved is as follows",u);
     }
 
     /**
@@ -43,7 +43,7 @@ public class UserController {
     @PostMapping("perfectInformation")
     public RespBean perfectInformation(@RequestBody User u){
         userService.perfectInformation(u);
-        return RespBean.ok("");
+        return RespBean.ok("success",u);
     }
 
     /**
@@ -52,7 +52,7 @@ public class UserController {
      */
     @GetMapping("getEmergencyNumber")
     public RespBean getEmergencyNumber(){
-        return RespBean.ok("sucess",userService.getEmergencyNumber());
+        return RespBean.ok("Emergency contacts are as follows",userService.getEmergencyNumber());
     }
 
 

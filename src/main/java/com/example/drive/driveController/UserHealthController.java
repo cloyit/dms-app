@@ -4,6 +4,7 @@ package com.example.drive.driveController;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.drive.entity.DrivingInformation;
 import com.example.drive.entity.UserHealth;
+import com.example.drive.mapper.UserHealthMapper;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.IUserHealthService;
 import com.example.drive.service.IUserService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 /**
  * <p>
@@ -30,6 +32,8 @@ public class UserHealthController {
     private IUserHealthService iUserHealthService;
     @Autowired
     private IUserService iUserService;
+    @Autowired
+    private UserHealthMapper userHealthMapper;
 
     /**
      * 查看一段时间的健康报表
@@ -55,20 +59,26 @@ public class UserHealthController {
      */
     @PostMapping("uploadHealth")
     public RespBean uploadHealth(@RequestBody UserHealth userHealth){
+        Long uid = iUserService.getUid();
+        userHealth.setUid(uid);
         iUserHealthService.uploadHealth(userHealth);
         return RespBean.ok("success",userHealth);
     }
     /**
      * 根据uid 获取最新的15个健康报表
-     * @param userHealth
      * @return
      */
-    @PostMapping("getLastUserHealth")
+    @GetMapping("getLastUserHealth")
     public RespBean getLastUserHealth(){
         Long uid = iUserService.getUid();
         QueryWrapper<UserHealth> queryWrapper = new QueryWrapper<UserHealth>();
         //iUserHealthService.uploadHealth(userHealth);
-        return RespBean.ok("success");
+       List<UserHealth>  userHealth = userHealthMapper.selectList(queryWrapper);
+        List<UserHealth> results = userHealth;
+       if(userHealth.size()>15){
+           results = userHealth.subList(userHealth.size()-15,userHealth.size()-1);
+       }
+        return RespBean.ok("success and detail",results);
     }
 
     /**

@@ -47,4 +47,11 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, Car> implements ICarS
         queryWrapper.eq("master_id",uid);
         return carMapper.selectList(queryWrapper);
     }
+
+    @Override
+    public void deleteCar(List<Integer> ids) {
+        QueryWrapper<Car> queryWrapper = new QueryWrapper<Car>();
+        queryWrapper.in("id",ids);
+        carMapper.delete(queryWrapper);
+    }
 }

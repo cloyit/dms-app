@@ -35,5 +35,7 @@ public class Peach implements Serializable {
 
     private String description;
 
+    private Integer cnt;
+
 
 }
