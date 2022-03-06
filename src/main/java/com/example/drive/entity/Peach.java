@@ -37,5 +37,7 @@ public class Peach implements Serializable {
 
     private Integer cnt;
 
+    private String qrcode;
+
 
 }

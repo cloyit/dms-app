@@ -48,9 +48,10 @@ public class TitleController {
 
         List<Title> titles = titleMapper.selectAllTitle();
         //查出所有的detail id 组合成title
-        QueryWrapper<Detail> queryWrapper = new QueryWrapper<Detail>();
+
 
         for(Title title : titles){
+            QueryWrapper<Detail> queryWrapper = new QueryWrapper<Detail>();
             queryWrapper.eq("master_id",title.getTitleId());
             List<Detail> details=  detailMapper.selectList(queryWrapper);
             title.setDetails(details);
@@ -142,9 +143,9 @@ public class TitleController {
         }
         titleList= titleMapper.getTitleLimit(begin,size);
         //根据title的id 查询detail
-        QueryWrapper<Detail> queryWrapper = new QueryWrapper<Detail>();
 
         for(Title title : titleList){
+            QueryWrapper<Detail> queryWrapper = new QueryWrapper<Detail>();
             queryWrapper.eq("master_id",title.getTitleId());
             List<Detail> details=  detailMapper.selectList(queryWrapper);
             title.setDetails(details);
