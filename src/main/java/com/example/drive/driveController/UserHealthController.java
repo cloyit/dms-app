@@ -1,18 +1,19 @@
 package com.example.drive.driveController;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.drive.entity.DrivingInformation;
 import com.example.drive.entity.UserHealth;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.IUserHealthService;
+import com.example.drive.service.IUserService;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * <p>
@@ -27,15 +28,23 @@ import java.time.LocalDateTime;
 public class UserHealthController {
     @Autowired
     private IUserHealthService iUserHealthService;
+    @Autowired
+    private IUserService iUserService;
 
     /**
      * 查看一段时间的健康报表
-     * @param beginTime
-     * @param endTime
      * @return
      */
     @GetMapping("getHealthByTime")
-    public RespBean getHealthByTime(LocalDateTime beginTime, LocalDateTime endTime){
+    public RespBean getHealthByTime(@RequestBody JSONObject jsonObject) throws JSONException {
+      String  beginTimeS = jsonObject.getString("beginTime");
+      String endTimeS = jsonObject.getString("endTime");
+
+      // String 转换为 LocalDateTime
+        String dateStr = "2021-09-03 21:00:00";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime beginTime = LocalDateTime.parse(beginTimeS, formatter);
+        LocalDateTime endTime = LocalDateTime.parse(endTimeS, formatter);
        return RespBean.ok("success",iUserHealthService.getHealthByTime(beginTime, endTime));
     }
 
@@ -45,9 +54,21 @@ public class UserHealthController {
      * @return
      */
     @PostMapping("uploadHealth")
-    public RespBean uploadHealth(UserHealth userHealth){
+    public RespBean uploadHealth(@RequestBody UserHealth userHealth){
         iUserHealthService.uploadHealth(userHealth);
         return RespBean.ok("success",userHealth);
+    }
+    /**
+     * 根据uid 获取最新的15个健康报表
+     * @param userHealth
+     * @return
+     */
+    @PostMapping("getLastUserHealth")
+    public RespBean getLastUserHealth(){
+        Long uid = iUserService.getUid();
+        QueryWrapper<UserHealth> queryWrapper = new QueryWrapper<UserHealth>();
+        //iUserHealthService.uploadHealth(userHealth);
+        return RespBean.ok("success");
     }
 
     /**
@@ -56,7 +77,7 @@ public class UserHealthController {
      * @return
      */
     @PostMapping("uploadDriving")
-    public RespBean uploadDriving(DrivingInformation drivingInformation){
+    public RespBean uploadDriving(@RequestBody DrivingInformation drivingInformation){
         iUserHealthService.uploadDriving(drivingInformation);
         return RespBean.ok("success",drivingInformation);
     }

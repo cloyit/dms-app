@@ -27,5 +27,9 @@ public class Detail implements Serializable {
 
     private String content;
 
+    private String pictureUrl;
+
+    private String description;
+
 
 }

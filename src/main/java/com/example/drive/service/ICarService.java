@@ -3,6 +3,8 @@ package com.example.drive.service;
 import com.example.drive.entity.Car;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -12,6 +14,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-12-22
  */
 public interface ICarService extends IService<Car> {
-    public void addCar(Car car);
+     void addCar(Car car);
+     List<Car> getAllCarByUid(Long uid);
+
 
 }

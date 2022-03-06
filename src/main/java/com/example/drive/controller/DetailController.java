@@ -46,14 +46,42 @@ public class DetailController {
     }
 
     /**
+     * 为detail上传图片
+     * @param file
+     * @param id
+     * @return
+     */
+    @PostMapping("uploadPictureById")
+    public RespBean uploadPictureById(MultipartFile file,Integer id){
+        //查询出对应的detail
+        QueryWrapper<Detail> queryWrapper = new QueryWrapper<Detail>();
+        queryWrapper.eq("detail_id",id);
+        Detail detail = detailMapper.selectOne(queryWrapper);
+        if(detail == null){
+            return RespBean.error("id not exist");
+        }
+        String[] result = null;
+        int num = detailMapper.selectCount(null);
+
+        try {
+            result = FastDFSUtil.upload(file.getBytes(),""+(num+1)+".jpg");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        detail.setPictureUrl("http://47.102.99.215/"+result[0]+"/"+result[1]);
+        detailMapper.insert(detail);
+        return RespBean.ok("success",detail);
+    }
+
+
+    /**
      * 根据titleId 查询所有的detail
      * @param titleId
      * @return
      */
     @GetMapping("getDetailByTitleId")
     public RespBean getDetailByTitleId(Integer titleId){
-      //查询此titleId是不是还在
-
+        //查询此titleId是不是还在
         Title title = iTitleService.getTitleById(titleId);
         if(title==null){
             return RespBean.error("The title corresponding to this ID does not exist");

@@ -1,5 +1,6 @@
 package com.example.drive.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.drive.entity.Car;
 import com.example.drive.entity.UserCarRalation;
 import com.example.drive.mapper.CarMapper;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * <p>
@@ -37,5 +39,12 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, Car> implements ICarS
         userCarRalation.setUid(iUserService.getUid());
         userCarRalationMapper.insert(userCarRalation);
         carMapper.insert(car);
+    }
+
+    @Override
+    public List<Car> getAllCarByUid(Long uid) {
+        QueryWrapper<Car> queryWrapper = new QueryWrapper<Car>();
+        queryWrapper.eq("master_id",uid);
+        return carMapper.selectList(queryWrapper);
     }
 }

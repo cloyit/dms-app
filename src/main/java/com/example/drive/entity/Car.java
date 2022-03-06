@@ -33,5 +33,7 @@ public class Car implements Serializable {
      */
     private String carNumber;
 
+    private Long masterId;
+
 
 }

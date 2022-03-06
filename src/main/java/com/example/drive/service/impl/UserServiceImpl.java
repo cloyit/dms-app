@@ -40,7 +40,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
 
-
+    /**
+     * 根据token获取uid
+     * @return
+     */
     @Override
     public Long getUid() {
         String userName =(String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -50,6 +53,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return u.getUid();
     }
 
+    /**
+     * 根据token获取紧急联系人
+     * @return
+     */
     @Override
     public String getEmergencyNumber() {
         QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
