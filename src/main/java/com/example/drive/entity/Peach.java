@@ -1,7 +1,9 @@
 package com.example.drive.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDateTime;
+
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -29,9 +31,9 @@ public class Peach implements Serializable {
 
     private String address;
 
-    private LocalDateTime list;
+    private Date list;
 
-    private LocalDateTime pick;
+    private Date pick;
 
     private String description;
 

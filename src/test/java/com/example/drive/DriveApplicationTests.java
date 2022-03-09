@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.io.File;
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -33,14 +34,15 @@ class DriveApplicationTests {
     @Test
     void contextLoads() {
 
-        LocalDateTime localDateTime = LocalDateTime.now();
+        Date date = Date.valueOf("2022-03-10");
         //制作一些数据
-        Peach peach = new Peach();
-        peach.setName("恩施圣桃子");
-        peach.setDescription("很大很大的桃子");
-        peach.setPick(localDateTime);
-        peach.setAddress("武汉理工大学");
-        peach.setList(localDateTime);
+        QueryWrapper<Peach> p = new QueryWrapper<Peach>();
+       Peach peach = new Peach();
+        peach.setName("夏季桃子");
+        peach.setDescription("只在夏天才有的彩色桃子");
+        peach.setPick(date);
+        peach.setAddress("中国");
+        peach.setList(date);
         for (int i=0;i<20;i++){
             peachMapper.insert(peach);
         }
