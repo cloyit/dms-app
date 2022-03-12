@@ -41,14 +41,14 @@ public class UserHealth implements Serializable {
     private String heartbeat;
 
     /**
-     * 血压
+     * 血氧
      */
-    private String bloodPressure;
+    private String bloodOxygen;
 
     /**
-     * 酒精浓度
+     * 温度
      */
-    private String alcohol;
+    private String temperature;
 
 
 }

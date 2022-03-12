@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -28,15 +29,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     UserMapper userMapper;
 
     @Override
-    public void register(User u) {
+    public void register(@RequestBody User u) {
         userMapper.insert(u);
     }
 
     @Override
-    public void perfectInformation(User u) {
+    public User perfectInformation(@RequestBody User u) {
         UpdateWrapper<User> wrapper = new UpdateWrapper<User>();
-        wrapper.eq("uid",u.getUid());
+        wrapper.eq("uid",getUid());
         userMapper.update(u,wrapper);
+        return u;
     }
 
 
@@ -63,5 +65,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         queryWrapper.eq("uid",getUid());
         User u = userMapper.selectOne(queryWrapper);
         return u.getEmergencyNumber();
+    }
+
+    @Override
+    public User getUser() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
+        queryWrapper.eq("uid",getUid());
+
+        return userMapper.selectOne(queryWrapper);
     }
 }

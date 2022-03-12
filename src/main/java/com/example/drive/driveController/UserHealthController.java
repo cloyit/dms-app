@@ -40,9 +40,7 @@ public class UserHealthController {
      * @return
      */
     @GetMapping("getHealthByTime")
-    public RespBean getHealthByTime(@RequestBody JSONObject jsonObject) throws JSONException {
-      String  beginTimeS = jsonObject.getString("beginTime");
-      String endTimeS = jsonObject.getString("endTime");
+    public RespBean getHealthByTime(String beginTimeS,String endTimeS)  {
 
       // String 转换为 LocalDateTime
         String dateStr = "2021-09-03 21:00:00";

@@ -1,14 +1,20 @@
 package com.example.drive.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.R;
+import com.example.drive.entity.Picture;
 import com.example.drive.entity.User;
+import com.example.drive.mapper.PictureMapper;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.IUserService;
 import com.example.drive.service.impl.UserServiceImpl;
+import com.example.drive.utills.FastDFSUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 /**
@@ -24,6 +30,8 @@ import java.time.LocalDateTime;
 public class UserController {
     @Autowired
     IUserService userService;
+    @Autowired
+    PictureMapper pictureMapper;
 
     /**
      * 注册
@@ -54,6 +62,48 @@ public class UserController {
     public RespBean getEmergencyNumber(){
         return RespBean.ok("Emergency contacts are as follows",userService.getEmergencyNumber());
     }
+
+    /**
+     * 上传头像
+     * @param file
+     * @return
+     */
+    @PostMapping("uploadPortrait")
+    public RespBean uploadPortrait(MultipartFile file){
+        Picture picture = new Picture();
+
+
+        String[] result = null;
+        int num = pictureMapper.selectCount(null);
+
+        try {
+            result = FastDFSUtil.upload(file.getBytes(),""+(num+1)+".jpg");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        picture.setUrl("http://47.102.99.215/"+result[0]+"/"+result[1]);
+        picture.setHref("http://47.102.99.215/"+result[0]+"/"+result[1]);
+
+        pictureMapper.insert(picture);
+
+        User user = userService.getUser();
+        user.setHeadPortrait(picture.getHref());
+        userService.perfectInformation(user);
+        return RespBean.ok("success",picture);
+
+
+    }
+    /**
+     *获取当前user的信息
+     * @return
+     */
+    @GetMapping("getUser")
+    public RespBean getUser(){
+        return RespBean.ok("user information is",userService.getUser());
+    }
+
+
+
 
 
 

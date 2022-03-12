@@ -19,8 +19,9 @@ import java.util.List;
 
 public interface IUserService extends IService<User> {
     void register(User u);
-    void perfectInformation(User u);
+    User perfectInformation(User u);
     Long getUid();
     String getEmergencyNumber();
+    User getUser();
 
 }

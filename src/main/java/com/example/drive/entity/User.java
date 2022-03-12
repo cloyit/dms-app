@@ -42,15 +42,8 @@ public class User implements Serializable {
      */
     private String gender;
 
-    /**
-     * 居住地址
-     */
-    private String address;
 
-    /**
-     * 出生日期
-     */
-    private String birth;
+
 
     /**
      * 电话号码
@@ -66,12 +59,27 @@ public class User implements Serializable {
      * 体重
      */
     private Double weight;
-    
+
+    /**
+     * 密码
+     */
     private String password;
 
+    /**
+     * 紧急联系人
+     */
     private String emergencyNumber;
 
-    private String information_face;
+    /**
+     * 头像
+     */
+    private String  headPortrait;
+
+    /**
+     * 年龄
+     */
+    private int year;
+
 
 
 }
