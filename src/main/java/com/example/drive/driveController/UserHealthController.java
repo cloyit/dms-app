@@ -8,6 +8,7 @@ import com.example.drive.mapper.UserHealthMapper;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.IUserHealthService;
 import com.example.drive.service.IUserService;
+import org.apache.tomcat.jni.Local;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,7 +49,23 @@ public class UserHealthController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime beginTime = LocalDateTime.parse(beginTimeS, formatter);
         LocalDateTime endTime = LocalDateTime.parse(endTimeS, formatter);
-       return RespBean.ok("success",iUserHealthService.getHealthByTime(beginTime, endTime));
+        List<UserHealth> UserHealthList = iUserHealthService.getHealthByTime(beginTime, endTime);
+        List<List<UserHealth>> result = new ArrayList<List<UserHealth>>();
+        //拆分数据,设置标识，循环遍历
+        int flag =0;
+        for(int i =0;i<UserHealthList.size();i++){
+            if(flag == UserHealthList.get(i).getTime().getDayOfYear()){
+                result.get(result.size()-1).add(UserHealthList.get(i));
+            }else {
+                //新建并且更新flag
+                flag = UserHealthList.get(i).getTime().getDayOfYear();
+                List<UserHealth> r = new ArrayList<UserHealth>();
+                r.add(UserHealthList.get(i));
+                result.add(r);
+            }
+        }
+
+       return RespBean.ok("success",result);
     }
 
     /**
@@ -72,11 +90,26 @@ public class UserHealthController {
         QueryWrapper<UserHealth> queryWrapper = new QueryWrapper<UserHealth>();
         //iUserHealthService.uploadHealth(userHealth);
        List<UserHealth>  userHealth = userHealthMapper.selectList(queryWrapper);
-        List<UserHealth> results = userHealth;
+        List<UserHealth> userHealthList = userHealth;
        if(userHealth.size()>15){
-           results = userHealth.subList(userHealth.size()-15,userHealth.size()-1);
+           userHealthList = userHealth.subList(userHealth.size()-15,userHealth.size()-1);
        }
-        return RespBean.ok("success and detail",results);
+
+        List<List<UserHealth>> result = new ArrayList<List<UserHealth>>();
+        //拆分数据,设置标识，循环遍历
+        int flag =0;
+        for(int i =0;i<userHealthList.size();i++){
+            if(flag == userHealthList.get(i).getTime().getDayOfYear()){
+                result.get(result.size()-1).add(userHealthList.get(i));
+            }else {
+                //新建并且更新flag
+                flag = userHealthList.get(i).getTime().getDayOfYear();
+                List<UserHealth> r = new ArrayList<UserHealth>();
+                r.add(userHealthList.get(i));
+                result.add(r);
+            }
+        }
+        return RespBean.ok("success and detail",result);
     }
 
     /**

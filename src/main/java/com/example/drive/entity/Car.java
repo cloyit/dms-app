@@ -35,5 +35,7 @@ public class Car implements Serializable {
 
     private Long masterId;
 
+    private int equipment;
+
 
 }

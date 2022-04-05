@@ -69,4 +69,17 @@ public class CarController {
     }
 
 
+
+    /**
+     * 绑定设备
+     * @param
+     * @return
+     */
+    @PostMapping("bandEquipment")
+    public RespBean bandEquipment(@RequestBody Car c){
+        QueryWrapper<Car> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id",c.getId());
+        iCarService.update(c,queryWrapper);
+        return RespBean.ok("success",c);
+    }
 }

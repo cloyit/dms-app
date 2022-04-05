@@ -75,6 +75,8 @@ public class User implements Serializable {
      */
     private String  headPortrait;
 
+    private  int Bracelet;
+
     /**
      * 年龄
      */
