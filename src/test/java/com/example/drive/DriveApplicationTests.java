@@ -72,4 +72,37 @@ class DriveApplicationTests {
 
     }
 
+    @Test
+    void test1() {
+
+
+        List<DrivingInformation> drivingInformationList = drivingInformationMapper.selectList(null);
+        for (DrivingInformation d : drivingInformationList) {
+            Random r = new Random();
+            d.setStartLatitude("114." + r.nextInt(40));
+            d.setEndLatitude("115." + r.nextInt(40));
+            d.setStartLongitude("30." + r.nextInt(40));
+            d.setEndLongitude("31." + r.nextInt(40));
+            QueryWrapper<DrivingInformation> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("id", d.getId());
+            drivingInformationMapper.update(d, queryWrapper);
+        }
+    }
+        @Test
+        void test2(){
+
+            List<UserHealth> userHealths = userHealthMapper.selectList(null);
+            for(UserHealth d : userHealths){
+                Random r = new Random();
+                int wendu = 5+r.nextInt(2);
+                d.setTemperature("3"+wendu+"."+r.nextInt(9));
+                QueryWrapper<UserHealth> queryWrapper = new QueryWrapper<UserHealth>();
+                queryWrapper.eq("id",d.getId());
+                userHealthMapper.update(d,queryWrapper);
+            }
+
+
+
+        }
+
 }

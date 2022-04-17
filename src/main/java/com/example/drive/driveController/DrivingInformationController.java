@@ -1,19 +1,27 @@
 package com.example.drive.driveController;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.drive.entity.Dpicture;
 import com.example.drive.entity.DrivingInformation;
+import com.example.drive.entity.Picture;
 import com.example.drive.entity.UserHealth;
+import com.example.drive.mapper.DpictureMapper;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.IDrivingInformationService;
 import com.example.drive.service.IUserService;
+import com.example.drive.utills.FastDFSUtil;
 import lombok.AllArgsConstructor;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -34,10 +42,12 @@ public class DrivingInformationController {
     private IDrivingInformationService iDrivingInformationService;
     @Autowired
     private IUserService iUserService;
+    @Autowired
+    private DpictureMapper dpictureMapper;
 
 
     /**
-     * 查看一段时间的健康报表
+     * 查看一段时间的驾驶记录
      * @return
      */
     @GetMapping("getDrivingInformationByDay")
@@ -69,7 +79,7 @@ public class DrivingInformationController {
     }
 
     /**
-     * 查看一段时间的健康报表
+     * 查看一段时间的驾驶记录
      * @return
      */
     @GetMapping("getDrivingInformationByTime")
@@ -99,5 +109,40 @@ public class DrivingInformationController {
         }else {
             return RespBean.error("is empty");
         }
+    }
+
+
+    /**
+     * 上传驾驶中不良驾驶的图片
+     * @param file
+     * @param did
+     * @return
+     */
+    @PostMapping("uploadDPicture")
+    public RespBean uploadPicture(MultipartFile file, Integer did){
+        Dpicture dpicture = new Dpicture();
+        dpicture.setDid(did);
+        String[] result = null;
+        int num = dpictureMapper.selectCount(null);
+
+        try {
+            result = FastDFSUtil.upload(file.getBytes(),""+(num+1)+".jpg");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dpicture.setUrl("http://47.102.99.215/"+result[0]+"/"+result[1]);
+        dpictureMapper.insert(dpicture);
+        return RespBean.ok("success",dpicture);
+    }
+
+    @GetMapping("getDPictureById")
+    public RespBean getDPictureById(Integer did){
+        QueryWrapper<Dpicture> queryWrapper = new QueryWrapper<Dpicture>();
+        queryWrapper.eq("did",did);
+        List<Dpicture>  dpictureList= dpictureMapper.selectList(queryWrapper);
+        if(dpictureList==null){
+            return RespBean.error("not have");
+        }
+        return RespBean.ok("success",dpictureList);
     }
 }

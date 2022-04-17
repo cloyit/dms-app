@@ -108,13 +108,29 @@ public class UserController {
      *绑定手环
      * @return
      */
-    @GetMapping("bindBracelet")
+    @PostMapping("bindBracelet")
     public RespBean bindBracelet(Integer bracelet){
         User u = userService.getUser();
         u.setBracelet(bracelet);
         //获取user ，更新 插入
         userService.perfectInformation(u);
         return RespBean.ok("user information is",userService.getUser());
+    }
+
+
+
+    /**
+     *获取用户手环
+     * @return
+     */
+    @GetMapping("getBracelet")
+    public RespBean getBracelet(){
+        User u = userService.getUser();
+        int bracelet = u.getBracelet();
+        if(bracelet==0){
+            return RespBean.error("not band Bracelet");
+        }
+        return RespBean.ok("user bracelet id is",bracelet);
     }
 
 

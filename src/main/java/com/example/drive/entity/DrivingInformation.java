@@ -63,5 +63,6 @@ public class DrivingInformation implements Serializable {
     private String endLongitude;
     private String startLatitude;
     private String endLatitude;
+    private String alcohol;
 
 }

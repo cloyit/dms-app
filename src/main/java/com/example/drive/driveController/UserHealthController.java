@@ -3,7 +3,10 @@ package com.example.drive.driveController;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.drive.entity.DrivingInformation;
+import com.example.drive.entity.Report;
+import com.example.drive.entity.User;
 import com.example.drive.entity.UserHealth;
+import com.example.drive.mapper.ReportMapper;
 import com.example.drive.mapper.UserHealthMapper;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.IUserHealthService;
@@ -36,6 +39,8 @@ public class UserHealthController {
     private IUserService iUserService;
     @Autowired
     private UserHealthMapper userHealthMapper;
+    @Autowired
+    ReportMapper reportMapper;
 
     /**
      * 查看一段时间的健康报表
@@ -122,5 +127,20 @@ public class UserHealthController {
         iUserHealthService.uploadDriving(drivingInformation);
         return RespBean.ok("success",drivingInformation);
     }
+
+
+    /**
+     * 上传摄像头采集的数据
+     * @return
+     */
+    @GetMapping("getReport")
+    public RespBean getReport(){
+        User user = iUserService.getUser();
+        QueryWrapper<Report> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("uid",user.getUid());
+        Report report = reportMapper.selectOne(queryWrapper);
+        return RespBean.ok("success report is ",report);
+    }
+
 
 }

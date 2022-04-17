@@ -51,16 +51,6 @@ public class User implements Serializable {
     private String tel;
 
     /**
-     * 身高
-     */
-    private Double height;
-
-    /**
-     * 体重
-     */
-    private Double weight;
-
-    /**
      * 密码
      */
     private String password;
