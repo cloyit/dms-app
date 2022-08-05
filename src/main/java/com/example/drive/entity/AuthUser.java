@@ -23,15 +23,16 @@ public class AuthUser implements UserDetails {
     private String password;
 
     /**
-     * 保存用户的权限
-     */
-    /**
      * 用户的ID
      */
     private Long uid;
-    //roles 里包含了权限加角色，角色前缀为RLOE而已
 
+    /**
+     * roles 里包含了权限加角色，角色前缀为RLOE而已
+     */
     private List<String> roles;
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();

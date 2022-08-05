@@ -2,17 +2,12 @@ package com.example.drive.entity;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * <p>
- * 
- * </p>
- *
  * @author zhulu
  * @since 2021-12-22
  */
@@ -60,9 +55,12 @@ public class DrivingInformation implements Serializable {
     private Integer carId;
 
     private String startLongitude;
-    private String endLongitude;
-    private String startLatitude;
-    private String endLatitude;
-    private String alcohol;
 
+    private String endLongitude;
+
+    private String startLatitude;
+
+    private String endLatitude;
+
+    private String alcohol;
 }

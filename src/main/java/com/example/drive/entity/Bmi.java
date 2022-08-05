@@ -1,29 +1,34 @@
 package com.example.drive.entity;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * @author zhulu
- * @since 2022-02-23
+ * @since 2022-04-10
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Detail implements Serializable {
+@ToString
+public class Bmi implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "detail_id", type = IdType.AUTO)
-    private Integer detailId;
+    @TableId(type = IdType.AUTO)
+    private Long id;
 
-    private Integer masterId;
+    private Long uid;
 
-    private String content;
+    private String height;
 
-    private String pictureUrl;
+    private String weight;
 
-    private String description;
+    LocalDateTime time;
+
 }
