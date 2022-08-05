@@ -1,6 +1,6 @@
 package com.example.drive.service;
 
-import com.example.drive.entity.Peach;
+import com.example.drive.entity.Report;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author zhulu
- * @since 2022-02-21
+ * @since 2022-04-10
  */
-public interface IPeachService extends IService<Peach> {
+public interface IReportService extends IService<Report> {
 
 }

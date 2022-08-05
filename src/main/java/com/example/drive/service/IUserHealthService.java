@@ -16,7 +16,9 @@ import java.util.List;
  * @since 2021-12-22
  */
 public interface IUserHealthService extends IService<UserHealth> {
-    List<UserHealth> getHealthByTime(LocalDateTime beginTime, LocalDateTime endTime);
+    List<List<UserHealth>> getHealthByTime(LocalDateTime beginTime, LocalDateTime endTime);
     void uploadHealth(UserHealth userHealth);
     void uploadDriving(DrivingInformation drivingInformation);
+
+    List<List<UserHealth>> getLastUserHealth(Long uid);
 }

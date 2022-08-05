@@ -9,10 +9,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * <p>
- * 
- * </p>
- *
  * @author zhulu
  * @since 2021-12-22
  */
@@ -49,6 +45,5 @@ public class UserHealth implements Serializable {
      * 温度
      */
     private String temperature;
-
 
 }

@@ -1,25 +1,30 @@
 package com.example.drive.controller;
 
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.api.R;
+import com.example.drive.aop.LogAnnotation;
 import com.example.drive.entity.Picture;
 import com.example.drive.entity.User;
 import com.example.drive.mapper.PictureMapper;
+import com.example.drive.mapper.UserMapper;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.IUserService;
-import com.example.drive.service.impl.UserServiceImpl;
 import com.example.drive.utills.FastDFSUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 
 /**
  * <p>
- *  å‰ç«¯æ§åˆ¶å™¨
+ * Ç°¶Ë¿ØÖÆÆ÷
  * </p>
  *
  * @author zhulu
@@ -30,111 +35,131 @@ import java.time.LocalDateTime;
 public class UserController {
     @Autowired
     IUserService userService;
+
     @Autowired
     PictureMapper pictureMapper;
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    UserMapper userMapper;
+
 
     /**
-     * æ³¨å†Œ
-     * @param u
-     * @return
+     * ×¢²á
      */
     @PostMapping("/register")
-    public RespBean register(@RequestBody User u){
+    @LogAnnotation(module = "User",operation = "Add")
+    public RespBean register(@RequestBody User u) {
+        u.setPassword(passwordEncoder.encode(u.getPassword()));
         userService.register(u);
-        return RespBean.ok("success It is suggested to improve personal information. The information that can be improved is as follows",u);
+
+        return RespBean.ok("success It is suggested to improve personal information. The information that can be improved is as follows", u);
     }
 
+
     /**
-     * å®Œå–„ä¸ªäººä¿¡æ¯
-     * @return
+     * ÍêÉÆ¸öÈËĞÅÏ¢
      */
     @PostMapping("perfectInformation")
-    public RespBean perfectInformation(@RequestBody User u){
+    @LogAnnotation(module = "User",operation = "Update")
+    public RespBean perfectInformation(@RequestBody User u) {
         userService.perfectInformation(u);
-        return RespBean.ok("success",u);
+        return RespBean.ok("success", u);
     }
 
+
     /**
-     *è·å–ç´§æ€¥ç”µè¯å·ç 
-     * @return
+     * »ñÈ¡½ô¼±µç»°ºÅÂë
      */
     @GetMapping("getEmergencyNumber")
-    public RespBean getEmergencyNumber(){
-        return RespBean.ok("Emergency contacts are as follows",userService.getEmergencyNumber());
+    @Cacheable(cacheNames = "emergencyNumber")
+    @LogAnnotation(module = "User",operation = "Get")
+    public RespBean getEmergencyNumber() {
+        return RespBean.ok("Emergency contacts are as follows", userService.getEmergencyNumber());
     }
 
+
     /**
-     * ä¸Šä¼ å¤´åƒ
-     * @param file
-     * @return
+     * ÉÏ´«Í·Ïñ
      */
     @PostMapping("uploadPortrait")
-    public RespBean uploadPortrait(MultipartFile file){
-        Picture picture = new Picture();
-
-
-        String[] result = null;
-        int num = pictureMapper.selectCount(null);
-
-        try {
-            result = FastDFSUtil.upload(file.getBytes(),""+(num+1)+".jpg");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        picture.setUrl("http://47.102.99.215/"+result[0]+"/"+result[1]);
-        picture.setHref("http://47.102.99.215/"+result[0]+"/"+result[1]);
-
-        pictureMapper.insert(picture);
-
-        User user = userService.getUser();
-        user.setHeadPortrait(picture.getHref());
-        userService.perfectInformation(user);
-        return RespBean.ok("success",picture);
-
-
+    @LogAnnotation(module = "User",operation = "Update")
+    public RespBean uploadPortrait(MultipartFile file) {
+        Picture picture = userService.uploadPortrait(file);
+        return RespBean.ok("success", picture);
     }
+
+
     /**
-     *è·å–å½“å‰userçš„ä¿¡æ¯
-     * @return
+     * »ñÈ¡µ±Ç°userµÄĞÅÏ¢
      */
     @GetMapping("getUser")
-    public RespBean getUser(){
-        return RespBean.ok("user information is",userService.getUser());
+    @LogAnnotation(module = "User",operation = "Get")
+    public RespBean getUser() {
+        return RespBean.ok("user information is", userService.getUser());
     }
 
 
-
     /**
-     *ç»‘å®šæ‰‹ç¯
-     * @return
+     * °ó¶¨ÊÖ»·
      */
     @PostMapping("bindBracelet")
-    public RespBean bindBracelet(Integer bracelet){
+    @LogAnnotation(module = "User",operation = "Update")
+    public RespBean bindBracelet(Integer bracelet) {
         User u = userService.getUser();
         u.setBracelet(bracelet);
-        //è·å–user ï¼Œæ›´æ–° æ’å…¥
         userService.perfectInformation(u);
-        return RespBean.ok("user information is",userService.getUser());
+        return RespBean.ok("user information is", userService.getUser());
     }
-
 
 
     /**
-     *è·å–ç”¨æˆ·æ‰‹ç¯
-     * @return
+     * »ñÈ¡ÓÃ»§ÊÖ»·
      */
     @GetMapping("getBracelet")
-    public RespBean getBracelet(){
+    @LogAnnotation(module = "User",operation = "Get")
+    public RespBean getBracelet() {
         User u = userService.getUser();
         int bracelet = u.getBracelet();
-        if(bracelet==0){
+        if (bracelet == 0) {
             return RespBean.error("not band Bracelet");
         }
-        return RespBean.ok("user bracelet id is",bracelet);
+        return RespBean.ok("user bracelet id is", bracelet);
     }
 
 
+    /**
+     * ĞŞ¸ÄÃÜÂë
+     */
+    @GetMapping("getApp")
+    @LogAnnotation(module = "User",operation = "Get")
+    public ResponseEntity<FileSystemResource> getApp() {
+        String contentDisposition = ContentDisposition
+                .builder("attachment")
+                .filename("/home/zhulu02/anzhixing.apk")
+                .build().toString();
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition)
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(new FileSystemResource("/home/zhulu02/anzhixing.apk"));
+    }
 
 
-
+    /**
+     * ĞŞ¸ÄÃÜÂë
+     */
+    @GetMapping("updatePassword")
+    @LogAnnotation(module = "User",operation = "Update")
+    public RespBean updatePassword(String password) {
+        User user = userService.getUser();
+        if (passwordEncoder.matches(user.getPassword(), password)) {
+            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("uid", user.getUid());
+            user.setPassword(passwordEncoder.encode(password));
+            userMapper.update(user, queryWrapper);
+            return RespBean.ok("success");
+        } else {
+            return RespBean.error("passowrd error");
+        }
+    }
 }

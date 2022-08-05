@@ -8,10 +8,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * <p>
- * 
- * </p>
- *
  * @author zhulu
  * @since 2021-12-22
  */
@@ -20,6 +16,7 @@ import lombok.EqualsAndHashCode;
 public class Car implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @TableId(type = IdType.AUTO)
     private int id;
 
@@ -33,9 +30,9 @@ public class Car implements Serializable {
      */
     private String carNumber;
 
+
     private Long masterId;
 
+
     private int equipment;
-
-
 }

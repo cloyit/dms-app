@@ -2,10 +2,11 @@ package com.example.drive.service;
 
 import com.example.drive.entity.Picture;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author zhulu
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IPictureService extends IService<Picture> {
 
+    Picture uploadPortrait(MultipartFile file, String description);
 }

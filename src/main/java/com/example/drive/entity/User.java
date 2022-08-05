@@ -6,17 +6,15 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
- * <p>
- * 
- * </p>
- *
  * @author zhulu
  * @since 2021-12-22
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
+@ToString
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,9 +40,6 @@ public class User implements Serializable {
      */
     private String gender;
 
-
-
-
     /**
      * 电话号码
      */
@@ -63,15 +58,28 @@ public class User implements Serializable {
     /**
      * 头像
      */
-    private String  headPortrait;
+    private String headPortrait;
 
-    private  int Bracelet;
+
+    private Integer Bracelet;
 
     /**
      * 年龄
      */
-    private int year;
+    private Integer year;
 
+    /**
+     * 团队ID
+     */
+    private Integer teamId;
+    
+    /**
+     * 职位
+     */
+    private String position;
 
-
+    /**
+     * 用户身份
+     */
+    private String role;
 }

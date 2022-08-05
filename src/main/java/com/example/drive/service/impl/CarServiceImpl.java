@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author zhulu
@@ -31,6 +31,7 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, Car> implements ICarS
     private CarMapper carMapper;
     @Autowired
     private UserCarRalationMapper userCarRalationMapper;
+
     @Override
     @Transactional
     public void addCar(Car car) {
@@ -43,15 +44,15 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, Car> implements ICarS
 
     @Override
     public List<Car> getAllCarByUid(Long uid) {
-        QueryWrapper<Car> queryWrapper = new QueryWrapper<Car>();
-        queryWrapper.eq("master_id",uid);
+        QueryWrapper<Car> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("master_id", uid);
         return carMapper.selectList(queryWrapper);
     }
 
     @Override
     public void deleteCar(List<Integer> ids) {
-        QueryWrapper<Car> queryWrapper = new QueryWrapper<Car>();
-        queryWrapper.in("id",ids);
+        QueryWrapper<Car> queryWrapper = new QueryWrapper<>();
+        queryWrapper.in("id", ids);
         carMapper.delete(queryWrapper);
     }
 }
