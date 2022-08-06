@@ -86,8 +86,10 @@ public class DrivingInformationController {
         LocalDateTime beginTime = LocalDateTime.parse(beginTimeS, formatter);
         LocalDateTime endTime = LocalDateTime.parse(endTimeS, formatter);
 
+//        List<List<DrivingInformation>> result = iDrivingInformationService.getDrivingInformationByDay(
+//                iUserService.getUid(), beginTime, endTime);
         List<List<DrivingInformation>> result = iDrivingInformationService.getDrivingInformationByDay(
-                iUserService.getUid(), beginTime, endTime);
+                1473527123812581377L, beginTime, endTime);
 
         if (result != null) {
             return RespBean.ok("DrivingInformation are ", result);

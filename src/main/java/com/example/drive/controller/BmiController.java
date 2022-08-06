@@ -52,7 +52,7 @@ public class BmiController {
     @GetMapping("getAllBmi")
     @LogAnnotation(module = "Bmi")
     @ApiOperation("获取所有Brand列表")
-    public RespBean updateBrandByName() {
+    public RespBean getAllBmi() {
 //        User u = iUserService.getUser();
         QueryWrapper<Bmi> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("uid", 1473527123812581377L);
