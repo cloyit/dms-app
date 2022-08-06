@@ -1,5 +1,7 @@
 package com.example.drive.response;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.ToString;
 
@@ -8,9 +10,13 @@ import lombok.ToString;
  */
 @Data
 @ToString
+@Api("响应数据类")
 public class RespBean {
+    @ApiModelProperty("返回码")
     private Integer status;
+    @ApiModelProperty("响应信息")
     private String msg;
+    @ApiModelProperty("返回数据")
     private Object obj;
 
 

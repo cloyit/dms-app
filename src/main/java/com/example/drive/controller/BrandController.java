@@ -9,6 +9,10 @@ import com.example.drive.entity.Brand;
 import com.example.drive.mapper.BrandMapper;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.IBrandService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -28,6 +32,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/brand")
+@Api(tags = "品牌信息相关")
 public class BrandController {
 
     @Autowired
@@ -44,6 +49,7 @@ public class BrandController {
     @GetMapping("getAllBrand")
     @Cacheable(value = "all", key = "0")
     @LogAnnotation(module = "Brand",operation = "Get")
+    @ApiOperation("获取所有Brand信息")
     public RespBean getAllBrand() {
         return RespBean.ok("success", brandMapper.selectList(null));
     }
@@ -54,6 +60,7 @@ public class BrandController {
      */
     @PostMapping("uploadBrand")
     @LogAnnotation(module = "Brand",operation = "Upload")
+    @ApiOperation("上传Brand信息")
     public RespBean uploadBrand(@RequestBody Brand brand) {
         List<Brand> brandList = brandMapper.selectList(null);
         for (Brand b : brandList) {
@@ -72,6 +79,7 @@ public class BrandController {
      */
     @PostMapping("updateBrandById")
     @LogAnnotation(module = "Brand",operation = "Update")
+    @ApiOperation("根据名称修改品牌信息")
     public RespBean updateBrandByName(@RequestBody Brand brand) {
         //先根据name获取id
         QueryWrapper<Brand> queryWrapper = new QueryWrapper<>();
@@ -86,6 +94,8 @@ public class BrandController {
      */
     @PostMapping("deleteBrandByIds")
     @LogAnnotation(module = "Brand",operation = "Delete")
+    @ApiOperation("根据name删除Brand")
+    @ApiImplicitParam(name = "Ids", value = "待删除ID列表", required = true)
     public RespBean deleteBrandById(@RequestBody List<Integer> Ids) {
         QueryWrapper<Brand> queryWrapper = new QueryWrapper<>();
         queryWrapper.in("brand_id", Ids);
@@ -100,6 +110,8 @@ public class BrandController {
     @GetMapping("selectBrandLike")
     @Cacheable(value = "Like", key = "#LikeName")
     @LogAnnotation(module = "Brand",operation = "Get")
+    @ApiOperation("根据名字模糊查询Brand")
+    @ApiImplicitParam(name = "LikeName", value = "待查询名称", required = true)
     public RespBean selectBrandLike(String LikeName) {
         QueryWrapper<Brand> queryWrapper = new QueryWrapper<>();
         queryWrapper.like("name", LikeName);
@@ -113,6 +125,11 @@ public class BrandController {
     @GetMapping("getBrandLimit")
     @Cacheable(value = "Pages", key = "#currentPage * #size")
     @LogAnnotation(module = "Brand",operation = "Get")
+    @ApiOperation("分页查询品牌信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "currentPage", value = "当前页数", required = true),
+            @ApiImplicitParam(name = "size", value = "数据总量", required = true)}
+    )
     public RespBean getBrandLimit(Integer currentPage, Integer size) {
         HashMap<String, Object> result = service.getBrandLimit(currentPage,size);
         int count = brandMapper.selectCount(null);

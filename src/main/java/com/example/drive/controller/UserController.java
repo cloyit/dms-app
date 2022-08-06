@@ -9,6 +9,9 @@ import com.example.drive.mapper.UserMapper;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.IUserService;
 import com.example.drive.utills.FastDFSUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.io.FileSystemResource;
@@ -19,19 +22,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.io.IOException;
 
 /**
- * <p>
- * 前端控制器
- * </p>
- *
  * @author zhulu
  * @since 2021-12-22
  */
 @RestController
 @RequestMapping("/user")
+@Api(tags = "鐢ㄦ埛淇℃伅鐩稿叧")
 public class UserController {
     @Autowired
     IUserService userService;
@@ -45,45 +46,51 @@ public class UserController {
 
 
     /**
-     * 注册
+     *娉ㄥ唽
      */
     @PostMapping("/register")
     @LogAnnotation(module = "User",operation = "Add")
-    public RespBean register(@RequestBody User u) {
-        u.setPassword(passwordEncoder.encode(u.getPassword()));
-        userService.register(u);
+    @ApiOperation("娉ㄥ唽")
+    @ApiImplicitParam(name = "user",value = "鐢ㄦ埛淇℃伅",required = true)
+    public RespBean register(@RequestBody User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userService.register(user);
 
-        return RespBean.ok("success It is suggested to improve personal information. The information that can be improved is as follows", u);
+        return RespBean.ok("success It is suggested to improve personal information. The information that can be improved is as follows", user);
     }
 
 
     /**
-     * 完善个人信息
+     * 鏇存柊淇℃伅
      */
     @PostMapping("perfectInformation")
     @LogAnnotation(module = "User",operation = "Update")
-    public RespBean perfectInformation(@RequestBody User u) {
-        userService.perfectInformation(u);
-        return RespBean.ok("success", u);
+    @ApiOperation("鏇存柊淇℃伅")
+    @ApiImplicitParam(name = "user",value = "鐢ㄦ埛淇℃伅",required = true)
+    public RespBean perfectInformation(@RequestBody User user) {
+        userService.perfectInformation(user);
+        return RespBean.ok("success", user);
     }
 
 
     /**
-     * 获取紧急电话号码
+     * 鑾峰彇绱ф�ヨ仈绯讳汉
      */
     @GetMapping("getEmergencyNumber")
     @Cacheable(cacheNames = "emergencyNumber")
     @LogAnnotation(module = "User",operation = "Get")
+    @ApiOperation("鑾峰彇绱ф�ヨ仈绯讳汉")
     public RespBean getEmergencyNumber() {
         return RespBean.ok("Emergency contacts are as follows", userService.getEmergencyNumber());
     }
 
 
     /**
-     * 上传头像
+     * 涓婁紶澶村儚
      */
     @PostMapping("uploadPortrait")
     @LogAnnotation(module = "User",operation = "Update")
+    @ApiImplicitParam(name = "file",value = "鏂囦欢",required = true)
     public RespBean uploadPortrait(MultipartFile file) {
         Picture picture = userService.uploadPortrait(file);
         return RespBean.ok("success", picture);
@@ -91,20 +98,23 @@ public class UserController {
 
 
     /**
-     * 获取当前user的信息
+     * 鑾峰彇褰撳墠鐢ㄦ埛
      */
     @GetMapping("getUser")
     @LogAnnotation(module = "User",operation = "Get")
+    @ApiOperation("鑾峰彇褰撳墠鐢ㄦ埛")
     public RespBean getUser() {
         return RespBean.ok("user information is", userService.getUser());
     }
 
 
     /**
-     * 绑定手环
+     * 缁戝畾鎵嬬幆
      */
     @PostMapping("bindBracelet")
     @LogAnnotation(module = "User",operation = "Update")
+    @ApiOperation("缁戝畾鎵嬬幆")
+    @ApiImplicitParam(name = "bracelet", value = "缁戝畾鎵嬬幆", required = true)
     public RespBean bindBracelet(Integer bracelet) {
         User u = userService.getUser();
         u.setBracelet(bracelet);
@@ -114,10 +124,11 @@ public class UserController {
 
 
     /**
-     * 获取用户手环
+     * 鑾峰彇鎵嬬幆淇℃伅
      */
     @GetMapping("getBracelet")
     @LogAnnotation(module = "User",operation = "Get")
+    @ApiOperation("鑾峰彇鎵嬬幆淇℃伅")
     public RespBean getBracelet() {
         User u = userService.getUser();
         int bracelet = u.getBracelet();
@@ -129,10 +140,11 @@ public class UserController {
 
 
     /**
-     * 修改密码
+     * 鑾峰彇App
      */
     @GetMapping("getApp")
     @LogAnnotation(module = "User",operation = "Get")
+    @ApiIgnore
     public ResponseEntity<FileSystemResource> getApp() {
         String contentDisposition = ContentDisposition
                 .builder("attachment")
@@ -146,10 +158,12 @@ public class UserController {
 
 
     /**
-     * 修改密码
+     * 鏇存柊瀵嗙爜
      */
     @GetMapping("updatePassword")
     @LogAnnotation(module = "User",operation = "Update")
+    @ApiOperation("鏇存柊瀵嗙爜")
+    @ApiImplicitParam(name = "password", value = "鏇存柊鍚庣殑瀵嗙爜", required = true)
     public RespBean updatePassword(String password) {
         User user = userService.getUser();
         if (passwordEncoder.matches(user.getPassword(), password)) {

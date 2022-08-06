@@ -8,6 +8,9 @@ import com.example.drive.entity.Car;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.ICarService;
 import com.example.drive.service.IUserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -26,6 +29,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/car")
+@Api(tags = "车辆信息相关")
 public class CarController {
     @Autowired
     ICarService iCarService;
@@ -35,12 +39,11 @@ public class CarController {
 
     /**
      * 根据当前用户增加车
-     *
-     * @param car
-     * @return
      */
     @PostMapping("addCar")
     @LogAnnotation(module = "Car",operation = "Add")
+    @ApiOperation("新增车辆信息")
+    @ApiImplicitParam(name = "car",value = "车辆对象",required = true)
     public RespBean addCar(@RequestBody Car car) {
         //增加master_id
         Long uid = iUserService.getUid();
@@ -58,6 +61,7 @@ public class CarController {
     @GetMapping("getAllCar")
     @Transactional
     @LogAnnotation(module = "Car",operation = "Get")
+    @ApiOperation("获取全部车辆信息")
     public RespBean getAllCar() {
         Long uid = iUserService.getUid();
 
@@ -69,12 +73,11 @@ public class CarController {
 
     /**
      * 根据car id 删除
-     *
-     * @param Ids
-     * @return
      */
     @PostMapping("deleteCarByIds")
     @LogAnnotation(module = "Car",operation = "Delete")
+    @ApiOperation("根据name删除Brand")
+    @ApiImplicitParam(name = "Ids", value = "待删除ID列表", required = true)
     public RespBean deleteBrandById(@RequestBody List<Integer> Ids) {
         iCarService.deleteCar(Ids);
         return RespBean.ok("Batch delete success");
@@ -83,12 +86,11 @@ public class CarController {
 
     /**
      * 绑定设备
-     *
-     * @param
-     * @return
      */
     @PostMapping("bandEquipment")
     @LogAnnotation(module = "Car",operation = "Get")
+    @ApiOperation("绑定设备")
+    @ApiImplicitParam(name = "c",value = "车辆对象",required = true)
     public RespBean bandEquipment(@RequestBody Car c) {
         QueryWrapper<Car> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("id", c.getId());

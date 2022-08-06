@@ -11,6 +11,10 @@ import com.example.drive.response.RespBean;
 import com.example.drive.service.IDrivingInformationService;
 import com.example.drive.service.IUserService;
 import com.example.drive.utills.FastDFSUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,6 +34,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/drivingInformation")
+@Api(tags = "驾驶信息相关")
 public class DrivingInformationController {
     @Autowired
     private IDrivingInformationService iDrivingInformationService;
@@ -46,6 +51,8 @@ public class DrivingInformationController {
      */
     @GetMapping("getDrivingInformationByDay")
     @LogAnnotation(module = "DrivingInformation",operation = "Get")
+    @ApiOperation("查看一段时间的驾驶记录")
+    @ApiImplicitParam(name = "beginTimeS",value = "起始日期",required = true)
     public RespBean getDrivingInformationByDay(String beginTimeS) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime beginTime = LocalDateTime.parse(beginTimeS, formatter);
@@ -69,6 +76,11 @@ public class DrivingInformationController {
      */
     @GetMapping("getDrivingInformationByTime")
     @LogAnnotation(module = "DrivingInformation",operation = "Get")
+    @ApiOperation("查看一段时间的驾驶记录")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "beginTimeS", value = "起始时间", required = true),
+            @ApiImplicitParam(name = "endTimeS", value = "结束时间", required = true)}
+    )
     public RespBean getDrivingInformationByDay(String beginTimeS, String endTimeS) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime beginTime = LocalDateTime.parse(beginTimeS, formatter);
@@ -91,6 +103,11 @@ public class DrivingInformationController {
      */
     @PostMapping("uploadDPicture")
     @LogAnnotation(module = "DrivingInformation",operation = "Upload")
+    @ApiOperation("上传驾驶中不良驾驶的图片")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "file", value = "文件", required = true),
+            @ApiImplicitParam(name = "did", value = "信息ID", required = true)}
+    )
     public RespBean uploadPicture(MultipartFile file, Integer did) {
         Dpicture dpicture = iDrivingInformationService.uploadPicture(file,did);
         return RespBean.ok("success", dpicture);
@@ -99,7 +116,9 @@ public class DrivingInformationController {
 
 
     @GetMapping("getDPictureById")
-    @LogAnnotation(module = "DrivingInformation",operation = "Get")
+    @LogAnnotation(module = "DrivingInformation", operation = "Get")
+    @ApiOperation("通过ID获取图片")
+    @ApiImplicitParam(name = "did", value = "图片ID", required = true)
     public RespBean getDPictureById(Integer did) {
         QueryWrapper<Dpicture> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("did", did);
@@ -113,6 +132,7 @@ public class DrivingInformationController {
 
 
     @GetMapping("getFace")
+    @ApiOperation("获取面部数据")
     @LogAnnotation(module = "DrivingInformation",operation = "Get")
     public RespBean getFace() {
         //直接获取一个用户所有的人脸打卡记录
@@ -129,6 +149,8 @@ public class DrivingInformationController {
      */
     @PostMapping("updateFace")
     @LogAnnotation(module = "DrivingInformation",operation = "Update")
+    @ApiOperation("上传人脸图像")
+    @ApiImplicitParam(name = "drivingInformation", value = "驾驶信息对象", required = true)
     public RespBean updateFace(@RequestBody DrivingInformation drivingInformation) {
         //直接获取一个用户所有的人脸打卡记录
         User u = iUserService.getUser();
