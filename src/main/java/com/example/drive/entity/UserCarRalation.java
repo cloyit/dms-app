@@ -1,14 +1,11 @@
 package com.example.drive.entity;
 
 import java.io.Serializable;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * <p>
- * 
- * </p>
- *
  * @author zhulu
  * @since 2021-12-22
  */
@@ -21,6 +18,4 @@ public class UserCarRalation implements Serializable {
     private Long uid;
 
     private Integer carId;
-
-
 }

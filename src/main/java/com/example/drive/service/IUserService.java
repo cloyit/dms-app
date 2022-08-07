@@ -1,12 +1,8 @@
 package com.example.drive.service;
 
+import com.example.drive.entity.Picture;
 import com.example.drive.entity.User;
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.drive.entity.UserHealth;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * <p>
@@ -17,11 +13,11 @@ import java.util.List;
  * @since 2021-12-22
  */
 
-public interface IUserService extends IService<User> {
+public interface IUserService  {
     void register(User u);
-    User perfectInformation(User u);
+    void perfectInformation(User u);
     Long getUid();
     String getEmergencyNumber();
     User getUser();
-
+    Picture uploadPortrait(MultipartFile file);
 }

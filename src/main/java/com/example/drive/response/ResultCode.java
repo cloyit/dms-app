@@ -2,7 +2,7 @@ package com.example.drive.response;
 
 /**
  * @author xiaoge
- * @Description 枚举这个就类似静态类,目的是指定返回的规范
+ * @Description 枚举这个就类似静态类, 目的是指定返回的规范
  * 规定:
  * #200表示成功
  * #1001～1999 区间表示参数错误
@@ -13,7 +13,7 @@ package com.example.drive.response;
  * #9001～9999 区间表示运行时异常
  * #后面对什么的操作自己在这里注明就行了
  */
-public enum ResultCode implements CustomizeResultCode{
+public enum ResultCode implements CustomizeResultCode {
 
     /* 成功 */
     SUCCESS(200, "成功"),
@@ -37,7 +37,7 @@ public enum ResultCode implements CustomizeResultCode{
     USER_ACCOUNT_NOT_EXIST(2007, "账号不存在"),
     USER_ACCOUNT_ALREADY_EXIST(2008, "账号已存在"),
     USER_ACCOUNT_USE_BY_OTHERS(2009, "您的登录已经超时或者已经在另一台机器登录，您被迫下线"),
-    USER_ACCOUNT_TOKEN_ERROR(2010,"token异常，请重新登录"),
+    USER_ACCOUNT_TOKEN_ERROR(2010, "token异常，请重新登录"),
 
     /* 业务错误 */
     NO_PERMISSION(4001, "没有权限"),
@@ -47,15 +47,15 @@ public enum ResultCode implements CustomizeResultCode{
     DEPARTMENT_ALREADY_EXIST(5008, "部门已存在"),
 
     /*运行时异常*/
-    ARITHMETIC_EXCEPTION(9001,"算数异常"),
-    NULL_POINTER_EXCEPTION(9002,"空指针异常"),
-    ARRAY_INDEX_OUTOfBOUNDS_EXCEPTION(9003,"数组越界");
+    ARITHMETIC_EXCEPTION(9001, "算数异常"),
+    NULL_POINTER_EXCEPTION(9002, "空指针异常"),
+    ARRAY_INDEX_OUTOfBOUNDS_EXCEPTION(9003, "数组越界");
+
 
     private Integer code;
-
     private String message;
 
-    ResultCode(Integer code,String message){
+    ResultCode(Integer code, String message) {
         this.code = code;
         this.message = message;
     }
@@ -69,4 +69,5 @@ public enum ResultCode implements CustomizeResultCode{
     public String getMessage() {
         return message;
     }
+
 }

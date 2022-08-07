@@ -1,6 +1,6 @@
 package com.example.drive.service;
 
-import com.example.drive.entity.Title;
+import com.example.drive.entity.Dpicture;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,9 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author zhulu
- * @since 2022-02-23
+ * @since 2022-04-10
  */
-public interface ITitleService extends IService<Title> {
+public interface IDpictureService extends IService<Dpicture> {
 
-    Title getTitleById(int id);
 }

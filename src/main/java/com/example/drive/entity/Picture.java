@@ -7,10 +7,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * <p>
- * 
- * </p>
- *
  * @author zhulu
  * @since 2022-03-02
  */
@@ -28,6 +24,4 @@ public class Picture implements Serializable {
     private String href;
 
     private String description;
-
-
 }

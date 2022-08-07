@@ -2,7 +2,6 @@ package com.example.drive.mapper;
 
 import com.example.drive.entity.Brand;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.drive.entity.Title;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

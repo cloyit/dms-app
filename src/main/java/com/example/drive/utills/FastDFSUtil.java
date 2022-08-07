@@ -1,21 +1,21 @@
 package com.example.drive.utills;
 
-import ch.qos.logback.classic.Logger;
 import org.csource.common.MyException;
 import org.csource.fastdfs.*;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+@Slf4j
 public class FastDFSUtil {
-    private static Logger logger = (Logger) LoggerFactory.getLogger(FastDFSUtil.class);
+
     /**
      * 文件上传
      */
-    public static String [] upload(byte[] buffFile,String fileExtName) {
+    public static String[] upload(byte[] buffFile, String fileExtName) {
         TrackerServer ts=null;
         StorageServer ss=null;
         try {
@@ -39,22 +39,22 @@ public class FastDFSUtil {
             String[] result= sc.upload_file(buffFile,fileExtName,null);
             return result;
         } catch (IOException e) {
-            logger.error("发生错误",e);
+            log.error("发生错误",e);
         } catch (MyException e) {
-            logger.error("发生错误",e);
+            log.error("发生错误",e);
         } finally {
             if(ss!=null){
                 try {
                     ss.close();
                 } catch (IOException e) {
-                    logger.error("发生错误",e);
+                    log.error("发生错误",e);
                 }
             }
             if(ts!=null){
                 try {
                     ts.close();
                 } catch (IOException e) {
-                    logger.error("发生错误",e);
+                    log.error("发生错误",e);
                 }
             }
         }
@@ -64,7 +64,7 @@ public class FastDFSUtil {
     /**
      * 下载文件
      */
-    public static byte [] download(String groupName,String remoteFilename) {
+    public static byte[] download(String groupName, String remoteFilename) {
         TrackerServer ts=null;
         StorageServer ss=null;
         try {
@@ -83,32 +83,30 @@ public class FastDFSUtil {
             byte [] buffFile=sc.download_file(groupName,remoteFilename);
             return buffFile;
         } catch (IOException e) {
-            logger.error("发生错误",e);
+            log.error("发生错误",e);
         } catch (MyException e) {
-            logger.error("发生错误",e);
+            log.error("发生错误",e);
         } finally {
             if(ss!=null){
                 try {
                     ss.close();
                 } catch (IOException e) {
-                    logger.error("发生错误",e);
+                    log.error("发生错误",e);
                 }
             }
             if(ts!=null){
                 try {
                     ts.close();
                 } catch (IOException e) {
-                    logger.error("发生错误",e);
+                    log.error("发生错误",e);
                 }
             }
         }
-
         return null;
     }
 
     /**
      * 文件删除
-     * @return
      */
     public static int delete(String groupName, String remoteFilename) {
         TrackerServer ts=null;
@@ -130,27 +128,28 @@ public class FastDFSUtil {
              */
             result=sc.delete_file(groupName,remoteFilename);
         } catch (IOException e) {
-            logger.error("发生错误",e);
+            log.error("发生错误",e);
         } catch (MyException e) {
-            logger.error("发生错误",e);
+            log.error("发生错误",e);
         } finally {
             if(ss!=null){
                 try {
                     ss.close();
                 } catch (IOException e) {
-                    logger.error("发生错误",e);
+                    log.error("发生错误",e);
                 }
             }
             if(ts!=null){
                 try {
                     ts.close();
                 } catch (IOException e) {
-                    logger.error("发生错误",e);
+                    log.error("发生错误",e);
                 }
             }
             return result;
         }
     }
+
 
     //将文件转换成Byte数组
     public static byte[] getBytesByFile(File file) {
@@ -159,15 +158,15 @@ public class FastDFSUtil {
             ByteArrayOutputStream bos = new ByteArrayOutputStream(1000);
             byte[] b = new byte[1000];
             int n;
-            while ((n = fis.read(b)) != -1) {
+            while ((n = fis.read(b)) != -1)
                 bos.write(b, 0, n);
-            }
+
             fis.close();
             byte[] data = bos.toByteArray();
             bos.close();
             return data;
         } catch (Exception e) {
-            logger.error("发生错误",e);
+            log.error("发生错误", e);
         }
         return null;
     }
