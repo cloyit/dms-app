@@ -13,6 +13,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.ContentDisposition;
@@ -50,6 +51,7 @@ public class UserController {
      */
     @PostMapping("/register")
     @LogAnnotation(module = "User",operation = "Add")
+    @CacheEvict(value = "User",allEntries = true)
     @ApiOperation("注册")
     @ApiImplicitParam(name = "user",value = "用户信息",required = true)
     public RespBean register(@RequestBody User user) {
@@ -65,6 +67,7 @@ public class UserController {
      */
     @PostMapping("perfectInformation")
     @LogAnnotation(module = "User",operation = "Update")
+    @CacheEvict(value = "User",allEntries = true)
     @ApiOperation("更新信息")
     @ApiImplicitParam(name = "user",value = "用户信息",required = true)
     public RespBean perfectInformation(@RequestBody User user) {
@@ -102,6 +105,7 @@ public class UserController {
      */
     @GetMapping("getUser")
     @LogAnnotation(module = "User",operation = "Get")
+    @Cacheable(value = "User",key = "'now'")
     @ApiOperation("获取当前用户")
     public RespBean getUser() {
         return RespBean.ok("user information is", userService.getUser());
@@ -113,6 +117,7 @@ public class UserController {
      */
     @PostMapping("bindBracelet")
     @LogAnnotation(module = "User",operation = "Update")
+    @CacheEvict(value = "User",allEntries = true)
     @ApiOperation("绑定手环")
     @ApiImplicitParam(name = "bracelet", value = "绑定手环", required = true)
     public RespBean bindBracelet(Integer bracelet) {
@@ -128,6 +133,7 @@ public class UserController {
      */
     @GetMapping("getBracelet")
     @LogAnnotation(module = "User",operation = "Get")
+    @Cacheable(value = "User",key = "'bracelet'")
     @ApiOperation("获取手环信息")
     public RespBean getBracelet() {
         User u = userService.getUser();
@@ -162,6 +168,7 @@ public class UserController {
      */
     @GetMapping("updatePassword")
     @LogAnnotation(module = "User",operation = "Update")
+    @CacheEvict(value = "User",key = "'now'")
     @ApiOperation("更新密码")
     @ApiImplicitParam(name = "password", value = "更新后的密码", required = true)
     public RespBean updatePassword(String password) {

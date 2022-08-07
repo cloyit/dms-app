@@ -16,6 +16,8 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
@@ -51,6 +53,7 @@ public class DrivingInformationController {
      */
     @GetMapping("getDrivingInformationByDay")
     @LogAnnotation(module = "DrivingInformation",operation = "Get")
+    @Cacheable(value = "DI",key = "#beginTimeS")
     @ApiOperation("查看一段时间的驾驶记录")
     @ApiImplicitParam(name = "beginTimeS",value = "起始日期",required = true)
     public RespBean getDrivingInformationByDay(String beginTimeS) {
@@ -76,6 +79,7 @@ public class DrivingInformationController {
      */
     @GetMapping("getDrivingInformationByTime")
     @LogAnnotation(module = "DrivingInformation",operation = "Get")
+    @Cacheable(value = "DI",key = "#beginTimeS")
     @ApiOperation("查看一段时间的驾驶记录")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "beginTimeS", value = "起始时间", required = true),
@@ -88,8 +92,6 @@ public class DrivingInformationController {
 
         List<List<DrivingInformation>> result = iDrivingInformationService.getDrivingInformationByDay(
                 iUserService.getUid(), beginTime, endTime);
-//        List<List<DrivingInformation>> result = iDrivingInformationService.getDrivingInformationByDay(
-//                1473527123812581377L, beginTime, endTime);
 
         if (result != null) {
             return RespBean.ok("DrivingInformation are ", result);
@@ -105,6 +107,7 @@ public class DrivingInformationController {
      */
     @PostMapping("uploadDPicture")
     @LogAnnotation(module = "DrivingInformation",operation = "Upload")
+    @CacheEvict(value = "DI",allEntries = true)
     @ApiOperation("上传驾驶中不良驾驶的图片")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "file", value = "文件", required = true),
@@ -120,6 +123,7 @@ public class DrivingInformationController {
     @GetMapping("getDPictureById")
     @LogAnnotation(module = "DrivingInformation", operation = "Get")
     @ApiOperation("通过ID获取图片")
+    @Cacheable(value = "DI",key = "'Picture'+'_'+ #did")
     @ApiImplicitParam(name = "did", value = "图片ID", required = true)
     public RespBean getDPictureById(Integer did) {
         QueryWrapper<Dpicture> queryWrapper = new QueryWrapper<>();
@@ -135,6 +139,7 @@ public class DrivingInformationController {
 
     @GetMapping("getFace")
     @ApiOperation("获取面部数据")
+    @Cacheable(value = "DI",key = "'Face'")
     @LogAnnotation(module = "DrivingInformation",operation = "Get")
     public RespBean getFace() {
         //直接获取一个用户所有的人脸打卡记录
@@ -151,6 +156,7 @@ public class DrivingInformationController {
      */
     @PostMapping("updateFace")
     @LogAnnotation(module = "DrivingInformation",operation = "Update")
+    @CacheEvict(value = "DI",allEntries = true)
     @ApiOperation("上传人脸图像")
     @ApiImplicitParam(name = "drivingInformation", value = "驾驶信息对象", required = true)
     public RespBean updateFace(@RequestBody DrivingInformation drivingInformation) {

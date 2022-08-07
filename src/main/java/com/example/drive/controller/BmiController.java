@@ -53,6 +53,7 @@ public class BmiController {
      */
     @GetMapping("getAllBmi")
     @LogAnnotation(module = "Bmi")
+    @Cacheable(value = "Bmi",key = "'All'")
     @ApiOperation("获取所有Brand列表")
     public RespBean getAllBmi() {
         User u = iUserService.getUser();
