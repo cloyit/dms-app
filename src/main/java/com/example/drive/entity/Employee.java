@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Data
 public class Employee implements Serializable {
     private static final long serialVersionUID=1L;
-    @ApiModelProperty("员工的ID")
+    @ApiModelProperty("员工ID")
     private Long id;
     @ApiModelProperty("用户名")
     private String username;
