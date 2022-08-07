@@ -1,8 +1,9 @@
 package com.example.drive.utills;
 
+
+import lombok.extern.slf4j.Slf4j;
 import org.csource.common.MyException;
 import org.csource.fastdfs.*;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -26,7 +27,7 @@ public class FastDFSUtil {
             ts=tc.getConnection();
             ss=tc.getStoreStorage(ts);
             //定义Storage的客户端对象，需要使用这个对象来完成具体的文件上传 下载和删除操作
-            StorageClient sc=new StorageClient(ts,ss);
+            StorageClient sc=new StorageClient(ts, ss);
             /**
              * 文件上传
              * 参数 1 为需要上传的文件的字节数组

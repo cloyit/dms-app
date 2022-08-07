@@ -85,11 +85,6 @@
         </dependency>
 
         <!--fastdfs-->
-        <dependency>
-            <groupId>org.csource</groupId>
-            <artifactId>fastdfs-client-java</artifactId>
-            <version>1.27-SNAPSHOT</version>
-        </dependency>
 
         <!-- ZXing  生成二维码-->
         <dependency>
