@@ -42,6 +42,7 @@ public class CarController {
      */
     @PostMapping("addCar")
     @LogAnnotation(module = "Car",operation = "Add")
+    @CacheEvict(value = "Car",allEntries = true)
     @ApiOperation("新增车辆信息")
     @ApiImplicitParam(name = "car",value = "车辆对象",required = true)
     public RespBean addCar(@RequestBody Car car) {
@@ -61,6 +62,7 @@ public class CarController {
     @GetMapping("getAllCar")
     @Transactional
     @LogAnnotation(module = "Car",operation = "Get")
+    @Cacheable(value = "Car",key = "'All'")
     @ApiOperation("获取全部车辆信息")
     public RespBean getAllCar() {
         Long uid = iUserService.getUid();
@@ -76,6 +78,7 @@ public class CarController {
      */
     @PostMapping("deleteCarByIds")
     @LogAnnotation(module = "Car",operation = "Delete")
+    @CacheEvict(value = "Car",allEntries = true)
     @ApiOperation("根据name删除Brand")
     @ApiImplicitParam(name = "Ids", value = "待删除ID列表", required = true)
     public RespBean deleteBrandById(@RequestBody List<Integer> Ids) {
@@ -89,6 +92,7 @@ public class CarController {
      */
     @PostMapping("bandEquipment")
     @LogAnnotation(module = "Car",operation = "Get")
+    @CacheEvict(value = "Car",allEntries = true)
     @ApiOperation("绑定设备")
     @ApiImplicitParam(name = "c",value = "车辆对象",required = true)
     public RespBean bandEquipment(@RequestBody Car c) {
