@@ -5,12 +5,14 @@ import com.example.drive.response.ResultCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -26,6 +28,7 @@ import java.util.Date;
 /**
  * 这个类负责生成token并返回给前端
  */
+@Slf4j
 public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
     private final static Logger logger= LoggerFactory.getLogger(JwtLoginFilter.class);
 
@@ -43,9 +46,11 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
         logger.debug("attemptAuthentication被调用");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+
         user.setUsername(username);
         user.setPassword(password);
-        /**
+        log.info(user.getPassword());
+        /*
          * getAuthenticationManager返回一个ProviderManager，调用ProviderManager的authenticate方法进行验证
          * authenticate会遍历所有的provider，找到处理UsernamePasswordAuthenticationToken的AbstractUserDetailsAuthenticationProvider
          * AbstractUserDetailsAuthenticationProvider的authenticate方法里首先进行用户的基本信息验证
