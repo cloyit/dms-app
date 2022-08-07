@@ -50,9 +50,9 @@ public class MyCacheConfig {
         RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
         template.setConnectionFactory(factory);
 
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = jackson2JsonRedisSerializer();
+//        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = jackson2JsonRedisSerializer();
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-        template.setDefaultSerializer(jackson2JsonRedisSerializer);
+//        template.setDefaultSerializer(jackson2JsonRedisSerializer);
         // key采用String的序列化方式
         template.setKeySerializer(stringRedisSerializer);
         // hash的key也采用String的序列化方式
@@ -71,16 +71,16 @@ public class MyCacheConfig {
     @Primary
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory factory) {
-        Jackson2JsonRedisSerializer<Object> jsonRedisSerializer = jackson2JsonRedisSerializer();
+//        Jackson2JsonRedisSerializer<Object> jsonRedisSerializer = jackson2JsonRedisSerializer();
 
         RedisCacheConfiguration cacheManager =
                 RedisCacheConfiguration.defaultCacheConfig()
                         //设置缓存有效时间(1小时)
-                        .entryTtl(Duration.ofHours(1))
+                        .entryTtl(Duration.ofHours(1));
                         //不缓存null结果，若出现null结果时会报异常
-                        .disableCachingNullValues()
+//                        .disableCachingNullValues();
                         //以json形式序列化对象
-                        .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(jsonRedisSerializer));
+//                        .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(jsonRedisSerializer));
 
         return RedisCacheManager.builder(factory).cacheDefaults(cacheManager).build();
     }

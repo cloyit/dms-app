@@ -5,13 +5,15 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /**
  * json 返回的对象
  */
 @Data
 @ToString
 @Api("响应数据类")
-public class RespBean {
+public class RespBean implements Serializable {
     @ApiModelProperty("返回码")
     private Integer status;
     @ApiModelProperty("响应信息")

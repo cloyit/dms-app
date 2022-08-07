@@ -47,8 +47,8 @@ public class BrandController {
      * 获取当前所有的Brand
      */
     @GetMapping("getAllBrand")
-    @Cacheable(value = "all", key = "0")
-    @LogAnnotation(module = "Brand",operation = "Get")
+    @LogAnnotation(module = "Brand")
+    @Cacheable(value = "Brand", key = "'all'")
     @ApiOperation("获取所有Brand信息")
     public RespBean getAllBrand() {
         return RespBean.ok("success", brandMapper.selectList(null));
@@ -79,6 +79,7 @@ public class BrandController {
      */
     @PostMapping("updateBrandById")
     @LogAnnotation(module = "Brand",operation = "Update")
+    @CacheEvict(value = "Brand", allEntries = true)
     @ApiOperation("根据名称修改品牌信息")
     public RespBean updateBrandByName(@RequestBody Brand brand) {
         //先根据name获取id
@@ -94,6 +95,7 @@ public class BrandController {
      */
     @PostMapping("deleteBrandByIds")
     @LogAnnotation(module = "Brand",operation = "Delete")
+    @CacheEvict(value = "Brand", allEntries = true)
     @ApiOperation("根据name删除Brand")
     @ApiImplicitParam(name = "Ids", value = "待删除ID列表", required = true)
     public RespBean deleteBrandById(@RequestBody List<Integer> Ids) {
@@ -108,10 +110,10 @@ public class BrandController {
      * 根据名字模糊查询
      */
     @GetMapping("selectBrandLike")
-    @Cacheable(value = "Like", key = "#LikeName")
     @LogAnnotation(module = "Brand",operation = "Get")
+    @Cacheable(value = "Brand", key = "'like:'+ #LikeName")
     @ApiOperation("根据名字模糊查询Brand")
-    @ApiImplicitParam(name = "LikeName", value = "待查询名称", required = true)
+    @ApiImplicitParam(name = "BrandLikeName", value = "待查询名称", required = true)
     public RespBean selectBrandLike(String LikeName) {
         QueryWrapper<Brand> queryWrapper = new QueryWrapper<>();
         queryWrapper.like("name", LikeName);
@@ -123,8 +125,8 @@ public class BrandController {
      * 分页查询品牌信息
      */
     @GetMapping("getBrandLimit")
-    @Cacheable(value = "Pages", key = "#currentPage * #size")
     @LogAnnotation(module = "Brand",operation = "Get")
+    @Cacheable(value = "Brand", key = "'Pages:'+#currentPage * #size")
     @ApiOperation("分页查询品牌信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "currentPage", value = "当前页数", required = true),

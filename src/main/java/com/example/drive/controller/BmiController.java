@@ -12,6 +12,8 @@ import com.example.drive.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,6 +42,7 @@ public class BmiController {
      */
     @PostMapping("uploadBmi")
     @LogAnnotation(module = "Bmi")
+    @CacheEvict(value = "Brand", allEntries = true)
     @ApiOperation("通过名称更新Brand")
     public RespBean updateBrandByName(@RequestBody Bmi bmi) {
         return RespBean.error("weight is String not number");
@@ -51,6 +54,7 @@ public class BmiController {
      */
     @GetMapping("getAllBmi")
     @LogAnnotation(module = "Bmi")
+    @Cacheable(value = "Brand", key = "'All'")
     @ApiOperation("获取所有Brand列表")
     public RespBean getAllBmi() {
 //        User u = iUserService.getUser();
