@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -68,8 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("*/js/**", "*/css/**","*/img/**");
         web.ignoring().antMatchers("/**/*.js", "/lang/*.json", "/**/*.css", "/**/*.js", "/**/*.map", "/**/*.html",
                 "/**/*.png");
-        web.ignoring().antMatchers(
-
+        web.ignoring().antMatchers(HttpMethod.GET,
                 "/v2/api-docs",
                 "/swagger-resources",
                 "/swagger-resources/**",
@@ -77,9 +77,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/configuration/security",
                 "/swagger-ui.html/**",
                 "/webjars/**",
-                "/temp",
-                "/employee/login",
-                "/employee/logout");
+                "/temp"
+               );
+        web.ignoring().antMatchers("/backend/**");
     }
 
 
@@ -131,4 +131,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().exceptionHandling();//匿名用户访问无权限资源时的异常处理;
 
     }
+
+
 }
