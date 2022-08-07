@@ -1,28 +1,20 @@
 package com.example.drive.config;
 
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.*;
-
-import java.net.UnknownHostException;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializationContext;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class MyCacheConfig {
@@ -33,9 +25,8 @@ public class MyCacheConfig {
         RedisTemplate<Object, Object> template = new RedisTemplate<Object, Object>();
         template.setConnectionFactory(factory);
 
-//        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = jackson2JsonRedisSerializer();
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-//        template.setDefaultSerializer(jackson2JsonRedisSerializer);
+
         // key采用String的序列化方式
         template.setKeySerializer(stringRedisSerializer);
         // hash的key也采用String的序列化方式
@@ -45,21 +36,28 @@ public class MyCacheConfig {
     }
 
 
-    // 解决cache(@Cacheable)把数据缓存到redis中的value时乱码问题
-    @Primary
     @Bean
-    public CacheManager cacheManager(RedisConnectionFactory factory) {
-//        Jackson2JsonRedisSerializer<Object> jsonRedisSerializer = jackson2JsonRedisSerializer();
+    public CacheManager cacheManager(RedisConnectionFactory  redisConnectionFactory) {
+        return new RedisCacheManager(
+                RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory),
+                this.getRedisCacheConfigurationWithTtl(),//默认策略
+                this.getRedisCacheConfigurationMap() //指定key策略
+        );
+    }
 
-        RedisCacheConfiguration cacheManager =
-                RedisCacheConfiguration.defaultCacheConfig()
-                        //设置缓存有效时间(1小时)
-                        .entryTtl(Duration.ofHours(1));
-                        //不缓存null结果，若出现null结果时会报异常
-//                        .disableCachingNullValues();
-                        //以json形式序列化对象
-//                        .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(jsonRedisSerializer));
+    private Map<String, RedisCacheConfiguration> getRedisCacheConfigurationMap() {
+        Map<String, RedisCacheConfiguration> redisCacheConfigurationMap = new HashMap<>();
+        redisCacheConfigurationMap.put("bankId", this.getRedisCacheConfigurationWithTtl()); // 2小时后失效
+        return redisCacheConfigurationMap;
+    }
 
-        return RedisCacheManager.builder(factory).cacheDefaults(cacheManager).build();
+    private RedisCacheConfiguration getRedisCacheConfigurationWithTtl() {
+        // 默认缓存2小时后失效
+        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
+        redisCacheConfiguration = redisCacheConfiguration.serializeValuesWith(
+                RedisSerializationContext.SerializationPair.fromSerializer(new JdkSerializationRedisSerializer())
+        ).entryTtl(Duration.ofHours(2));
+
+        return redisCacheConfiguration;
     }
 }
