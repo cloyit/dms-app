@@ -1,0 +1,182 @@
+10:32:19.924 [main] INFO  com.example.drive.DriveApplication - Starting DriveApplication using Java 17.0.1 on DESKTOP-MO964T4 with PID 9928 (C:\Users\dell\Desktop\dms-app\target\classes started by dell in C:\Users\dell\Desktop\dms-app)
+10:32:19.927 [main] INFO  com.example.drive.DriveApplication - No active profile set, falling back to default profiles: default
+10:32:21.410 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+10:32:21.414 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+10:32:21.465 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28 ms. Found 0 Redis repository interfaces.
+10:32:23.700 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9097 (http)
+10:32:23.711 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9097"]
+10:32:23.711 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+10:32:23.712 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+10:32:23.845 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+10:32:23.845 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3871 ms
+10:32:26.920 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='*/js/**'] with []
+10:32:26.921 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='*/css/**'] with []
+10:32:26.921 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='*/img/**'] with []
+10:32:26.921 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.js'] with []
+10:32:26.921 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/lang/*.json'] with []
+10:32:26.921 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.css'] with []
+10:32:26.921 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.js'] with []
+10:32:26.921 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.map'] with []
+10:32:26.922 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.html'] with []
+10:32:26.922 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.png'] with []
+10:32:26.922 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs', GET] with []
+10:32:26.922 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources', GET] with []
+10:32:26.922 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**', GET] with []
+10:32:26.923 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/configuration/ui', GET] with []
+10:32:26.923 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/configuration/security', GET] with []
+10:32:26.923 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-ui.html/**', GET] with []
+10:32:26.923 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**', GET] with []
+10:32:26.923 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/temp', GET] with []
+10:32:26.984 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@55665086, org.springframework.security.web.context.SecurityContextPersistenceFilter@1c5d376c, org.springframework.security.web.header.HeaderWriterFilter@7a71ebf1, org.springframework.web.filter.CorsFilter@233ece92, org.springframework.security.web.authentication.logout.LogoutFilter@7bdf94f2, com.example.drive.config.JwtLoginFilter@4a14f7d7, com.example.drive.config.JwtFilter@66596c4c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b0575d0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@96dfcbb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@15ce261, org.springframework.security.web.session.SessionManagementFilter@77e1dacd, org.springframework.security.web.access.ExceptionTranslationFilter@58a7ca42, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3980b44f]
+10:32:27.215 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9097"]
+10:32:27.287 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9097 (http) with context path ''
+10:32:27.728 [main] INFO  com.example.drive.DriveApplication - Started DriveApplication in 8.563 seconds (JVM running for 9.501)
+10:33:10.361 [http-nio-9097-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+10:33:10.362 [http-nio-9097-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+10:33:10.366 [http-nio-9097-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+10:37:45.254 [http-nio-9097-exec-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+10:43:29.795 [main] INFO  com.example.drive.DriveApplication - Starting DriveApplication using Java 17.0.1 on DESKTOP-MO964T4 with PID 17736 (C:\Users\dell\Desktop\dms-app\target\classes started by dell in C:\Users\dell\Desktop\dms-app)
+10:43:29.797 [main] INFO  com.example.drive.DriveApplication - No active profile set, falling back to default profiles: default
+10:43:30.801 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+10:43:30.804 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+10:43:30.843 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
+10:43:31.800 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9097 (http)
+10:43:31.808 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9097"]
+10:43:31.809 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+10:43:31.810 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+10:43:31.919 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+10:43:31.919 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2062 ms
+10:43:34.963 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='*/js/**'] with []
+10:43:34.964 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='*/css/**'] with []
+10:43:34.964 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='*/img/**'] with []
+10:43:34.964 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.js'] with []
+10:43:34.964 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/lang/*.json'] with []
+10:43:34.964 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.css'] with []
+10:43:34.964 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.js'] with []
+10:43:34.964 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.map'] with []
+10:43:34.964 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.html'] with []
+10:43:34.964 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.png'] with []
+10:43:34.964 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs', GET] with []
+10:43:34.964 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources', GET] with []
+10:43:34.965 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**', GET] with []
+10:43:34.965 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/configuration/ui', GET] with []
+10:43:34.965 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/configuration/security', GET] with []
+10:43:34.965 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-ui.html/**', GET] with []
+10:43:34.965 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**', GET] with []
+10:43:34.965 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/temp', GET] with []
+10:43:35.011 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@43ca96a0, org.springframework.security.web.context.SecurityContextPersistenceFilter@34ede267, org.springframework.security.web.header.HeaderWriterFilter@446f3a53, org.springframework.web.filter.CorsFilter@7c68a63c, org.springframework.security.web.authentication.logout.LogoutFilter@31a4db4f, com.example.drive.config.JwtLoginFilter@5443086a, com.example.drive.config.JwtFilter@5740ad76, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7df5549e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5feff876, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@40a84ea8, org.springframework.security.web.session.SessionManagementFilter@1e592ef2, org.springframework.security.web.access.ExceptionTranslationFilter@74844216, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4c78e00c]
+10:43:35.265 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9097"]
+10:43:35.309 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9097 (http) with context path ''
+10:43:35.865 [main] INFO  com.example.drive.DriveApplication - Started DriveApplication in 6.499 seconds (JVM running for 7.418)
+10:43:43.046 [http-nio-9097-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+10:43:43.046 [http-nio-9097-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+10:43:43.048 [http-nio-9097-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+10:43:43.124 [http-nio-9097-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+10:43:43.664 [http-nio-9097-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+10:43:43.731 [http-nio-9097-exec-1] INFO  com.example.drive.aop.LogAspect - ========================log start=============================
+10:43:43.731 [http-nio-9097-exec-1] INFO  com.example.drive.aop.LogAspect - module : Car
+10:43:43.731 [http-nio-9097-exec-1] INFO  com.example.drive.aop.LogAspect - requestMethod : GET
+10:43:43.732 [http-nio-9097-exec-1] INFO  com.example.drive.aop.LogAspect - requestPath : /car/getAllCar
+10:43:43.732 [http-nio-9097-exec-1] INFO  com.example.drive.aop.LogAspect - class : com.example.drive.driveController.CarController
+10:43:43.732 [http-nio-9097-exec-1] INFO  com.example.drive.aop.LogAspect - methodName : getAllCar()
+10:43:44.140 [http-nio-9097-exec-1] INFO  com.example.drive.aop.LogAspect - Throw Error : Cannot invoke "com.example.drive.entity.User.getUid()" because "u" is null
+10:43:44.142 [http-nio-9097-exec-1] INFO  com.example.drive.aop.LogAspect - execute time : 415 ms
+10:43:44.142 [http-nio-9097-exec-1] INFO  com.example.drive.aop.LogAspect - ========================log end===============================
+10:43:53.798 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - ========================log start=============================
+10:43:53.799 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - module : Car
+10:43:53.799 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - requestMethod : GET
+10:43:53.799 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - requestPath : /car/getAllCar
+10:43:53.800 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - class : com.example.drive.driveController.CarController
+10:43:53.800 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - methodName : getAllCar()
+10:43:53.843 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - Throw Error : Cannot invoke "com.example.drive.entity.User.getUid()" because "u" is null
+10:43:53.844 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - execute time : 46 ms
+10:43:53.844 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - ========================log end===============================
+10:45:45.997 [http-nio-9097-exec-5] INFO  com.example.drive.aop.LogAspect - ========================log start=============================
+10:45:45.998 [http-nio-9097-exec-5] INFO  com.example.drive.aop.LogAspect - module : Car
+10:45:45.998 [http-nio-9097-exec-5] INFO  com.example.drive.aop.LogAspect - requestMethod : GET
+10:45:45.999 [http-nio-9097-exec-5] INFO  com.example.drive.aop.LogAspect - requestPath : /car/getAllCar
+10:45:45.999 [http-nio-9097-exec-5] INFO  com.example.drive.aop.LogAspect - class : com.example.drive.driveController.CarController
+10:45:45.999 [http-nio-9097-exec-5] INFO  com.example.drive.aop.LogAspect - methodName : getAllCar()
+10:45:46.069 [http-nio-9097-exec-5] INFO  com.example.drive.aop.LogAspect - Throw Error : Cannot invoke "com.example.drive.entity.User.getUid()" because "u" is null
+10:45:46.070 [http-nio-9097-exec-5] INFO  com.example.drive.aop.LogAspect - execute time : 73 ms
+10:45:46.071 [http-nio-9097-exec-5] INFO  com.example.drive.aop.LogAspect - ========================log end===============================
+10:59:38.394 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - ========================log start=============================
+10:59:38.394 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - module : User
+10:59:38.394 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - requestMethod : GET
+10:59:38.395 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - requestPath : /user/getUser
+10:59:38.395 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - class : com.example.drive.controller.UserController
+10:59:38.395 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - methodName : getUser()
+10:59:38.832 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - Throw Error : Cannot invoke "com.example.drive.entity.User.getUid()" because "u" is null
+10:59:38.832 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - execute time : 438 ms
+10:59:38.833 [http-nio-9097-exec-2] INFO  com.example.drive.aop.LogAspect - ========================log end===============================
+11:27:53.536 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+11:27:53.539 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+11:28:01.615 [main] INFO  com.example.drive.DriveApplication - Starting DriveApplication using Java 17.0.1 on DESKTOP-MO964T4 with PID 21024 (C:\Users\dell\Desktop\dms-app\target\classes started by dell in C:\Users\dell\Desktop\dms-app)
+11:28:01.617 [main] INFO  com.example.drive.DriveApplication - No active profile set, falling back to default profiles: default
+11:28:03.141 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+11:28:03.145 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+11:28:03.201 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 32 ms. Found 0 Redis repository interfaces.
+11:28:04.468 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9097 (http)
+11:28:04.484 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9097"]
+11:28:04.484 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+11:28:04.485 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+11:28:04.643 [main] INFO  o.a.c.c.C.[.[localhost].[/peach] - Initializing Spring embedded WebApplicationContext
+11:28:04.643 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2964 ms
+11:28:07.626 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='*/js/**'] with []
+11:28:07.626 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='*/css/**'] with []
+11:28:07.626 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='*/img/**'] with []
+11:28:07.626 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.js'] with []
+11:28:07.626 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/lang/*.json'] with []
+11:28:07.626 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.css'] with []
+11:28:07.626 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.js'] with []
+11:28:07.627 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.map'] with []
+11:28:07.627 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.html'] with []
+11:28:07.627 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.png'] with []
+11:28:07.627 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs', GET] with []
+11:28:07.627 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources', GET] with []
+11:28:07.627 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**', GET] with []
+11:28:07.627 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/configuration/ui', GET] with []
+11:28:07.627 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/configuration/security', GET] with []
+11:28:07.627 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-ui.html/**', GET] with []
+11:28:07.627 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**', GET] with []
+11:28:07.627 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/temp', GET] with []
+11:28:07.669 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@e1fd2bf, org.springframework.security.web.context.SecurityContextPersistenceFilter@6ae32ff0, org.springframework.security.web.header.HeaderWriterFilter@5213b887, org.springframework.web.filter.CorsFilter@70f5f57d, org.springframework.security.web.authentication.logout.LogoutFilter@4c3fcbe7, com.example.drive.config.JwtLoginFilter@691eb389, com.example.drive.config.JwtFilter@301770d9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4bab804f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@796cf2b5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@40edc64e, org.springframework.security.web.session.SessionManagementFilter@6f4029e9, org.springframework.security.web.access.ExceptionTranslationFilter@2a30b0cb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@45753c22]
+11:28:07.799 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9097"]
+11:28:07.840 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9097 (http) with context path '/peach'
+11:28:08.308 [main] INFO  com.example.drive.DriveApplication - Started DriveApplication in 7.204 seconds (JVM running for 8.594)
+11:45:58.191 [main] INFO  com.example.drive.DriveApplication - Starting DriveApplication using Java 17.0.1 on DESKTOP-MO964T4 with PID 21384 (C:\Users\dell\Desktop\dms-app\target\classes started by dell in C:\Users\dell\Desktop\dms-app)
+11:45:58.192 [main] INFO  com.example.drive.DriveApplication - No active profile set, falling back to default profiles: default
+11:45:59.363 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+11:45:59.365 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+11:45:59.402 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
+11:46:00.251 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9097 (http)
+11:46:00.259 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9097"]
+11:46:00.260 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+11:46:00.260 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+11:46:00.373 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+11:46:00.374 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2122 ms
+11:46:02.914 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='*/js/**'] with []
+11:46:02.914 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='*/css/**'] with []
+11:46:02.914 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='*/img/**'] with []
+11:46:02.914 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.js'] with []
+11:46:02.914 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/lang/*.json'] with []
+11:46:02.914 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.css'] with []
+11:46:02.915 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.js'] with []
+11:46:02.915 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.map'] with []
+11:46:02.915 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.html'] with []
+11:46:02.915 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**/*.png'] with []
+11:46:02.915 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs', GET] with []
+11:46:02.915 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources', GET] with []
+11:46:02.915 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**', GET] with []
+11:46:02.915 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/configuration/ui', GET] with []
+11:46:02.915 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/configuration/security', GET] with []
+11:46:02.915 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-ui.html/**', GET] with []
+11:46:02.915 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**', GET] with []
+11:46:02.915 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/temp', GET] with []
+11:46:02.959 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@417751d3, org.springframework.security.web.context.SecurityContextPersistenceFilter@706c062e, org.springframework.security.web.header.HeaderWriterFilter@11174bf, org.springframework.web.filter.CorsFilter@5bf4dfb, org.springframework.security.web.authentication.logout.LogoutFilter@8e8ceb3, com.example.drive.config.JwtLoginFilter@8c3b634, com.example.drive.config.JwtFilter@65259737, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@11e3d08, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3ccefe1b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1e27bb89, org.springframework.security.web.session.SessionManagementFilter@188ae8d2, org.springframework.security.web.access.ExceptionTranslationFilter@52e92f6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1e54e900]
+11:46:03.207 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9097"]
+11:46:03.269 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9097 (http) with context path ''
+11:46:03.809 [main] INFO  com.example.drive.DriveApplication - Started DriveApplication in 6.048 seconds (JVM running for 6.917)
+11:48:21.916 [http-nio-9097-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+11:48:21.917 [http-nio-9097-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+11:48:21.921 [http-nio-9097-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
