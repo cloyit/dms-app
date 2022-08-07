@@ -99,4 +99,7 @@ public class User implements Serializable {
      */
     @ApiModelProperty("用户身份")
     private String role;
+
+    @ApiModelProperty("用户当前状态")
+    private String status;
 }

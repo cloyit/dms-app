@@ -1,7 +1,10 @@
 package com.example.drive.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.drive.aop.LogAnnotation;
+import com.example.drive.common.R;
 import com.example.drive.entity.Picture;
 import com.example.drive.entity.User;
 import com.example.drive.mapper.PictureMapper;
@@ -11,7 +14,10 @@ import com.example.drive.service.IUserService;
 import com.example.drive.utills.FastDFSUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -31,6 +37,7 @@ import java.io.IOException;
  * @author zhulu
  * @since 2021-12-22
  */
+@Slf4j
 @RestController
 @RequestMapping("/user")
 @Api(tags = "用户信息相关")
@@ -182,5 +189,34 @@ public class UserController {
         } else {
             return RespBean.error("passowrd error");
         }
+    }
+
+    /**
+     * 构造分页器
+     * @param page
+     * @param pageSize
+     * @param name
+     * @return
+     */
+    @ApiOperation("构造分页器")
+    @ApiImplicitParams({
+            @ApiImplicitParam( name = "page", value = "页数", required = true),
+            @ApiImplicitParam(name = "pageSize", value = "页面大小", required = true),
+            @ApiImplicitParam(name = "name", value = "搜索姓名", required = true)})
+    @GetMapping("/page")
+    public R<Page> page(int page, int pageSize, String name){
+        log.info("page = {}, pageSize = {}, name = {}",page,pageSize,name);
+        //构造分页构造器
+        Page pageInfo = new Page(page,pageSize);
+        //构造条件构造器
+        final LambdaQueryWrapper<User> queryWrapper =  new LambdaQueryWrapper<>();
+        //添加过滤条件
+        //什么时候name会为空？首次访问列表页面时
+        queryWrapper.like(StringUtils.isNotEmpty(name),User::getName,name);
+        //添加排序条件
+        //queryWrapper.orderByDesc(user);
+        //执行查询
+        userService.page(pageInfo,queryWrapper);
+        return R.success(pageInfo);
     }
 }

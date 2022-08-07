@@ -16,7 +16,7 @@
       <div class="tableBar">
         <el-input
           v-model="input"
-          placeholder="请输入菜品名称"
+          placeholder="请输入用户昵称"
           style="width: 250px"
           clearable
           @keyup.enter.native="handleQuery"
@@ -29,9 +29,8 @@
           ></i>
         </el-input>
         <div class="tableLab">
-          <span class="span-btn delBut non" @click="deleteHandle('批量', null)">批量删除</span>
-          <span class="span-btn blueBug non" @click="statusHandle('1')">批量启售</span>
-          <span style="border:none;" class="span-btn delBut non" @click="statusHandle('0')">批量停售</span>
+          <span class="span-btn blueBug non" @click="statusHandle('1')">批量禁用</span>
+          <span style="border:none;" class="span-btn delBut non" @click="statusHandle('0')">批量启用</span>
           <el-button
             type="primary"
             @click="addFoodtype('add')"
@@ -52,9 +51,9 @@
         ></el-table-column>
         <el-table-column
           prop="name"
-          label="菜品名称"
+          label="用户名称"
         ></el-table-column>
-        <el-table-column prop="image" label="图片" align="center">
+        <el-table-column prop="headPortrait" label="头像" align="center">
           <template slot-scope="{ row }">
             <el-image style="width: auto; height: 40px; border:none;cursor: pointer;" 
             :src="getImage(row.image)" 
@@ -66,22 +65,18 @@
           </template>
         </el-table-column>
         <el-table-column
-          prop="categoryName"
-          label="菜品分类"
+          prop="uid"
+          label="用户账号"
         ></el-table-column>
-        <el-table-column label="售价">
+
+        <el-table-column label="用户账号状态">
           <template slot-scope="scope">
-            <span style="margin-right: 10px;">￥{{ scope.row.price/100 }}</span>
-          </template>
-        </el-table-column>
-        <el-table-column label="售卖状态">
-          <template slot-scope="scope">
-            <span style="margin-right: 10px;">{{ scope.row.status == '0' ? '停售' : '启售' }}</span>
+            <span style="margin-right: 10px;">{{ scope.row.status == '0' ? '禁用' : '启用' }}</span>
           </template>
         </el-table-column>
         <el-table-column
-          prop="updateTime"
-          label="最后操作时间"
+          prop="unpassNum"
+          label="未通过帖子数"
         >
         </el-table-column>
         <el-table-column
@@ -104,7 +99,7 @@
               class="blueBug"
               @click="statusHandle(scope.row)"
             >
-              {{ scope.row.status == '0' ? '启售' : '停售' }}
+              {{ scope.row.status == '0' ? '启用' : '禁用' }}
             </el-button>
             <el-button
               type="text"
@@ -198,7 +193,7 @@
           },
 
           // 删除
-          deleteHandle (type, id) {
+          /*deleteHandle (type, id) {
             if (type === '批量' && id === null) {
               if (this.checkList.length === 0) {
                 return this.$message.error('请选择删除对象')
@@ -219,7 +214,7 @@
                 this.$message.error('请求出错了：' + err)
               })
             })
-          },
+          },*/
 
           //状态更改
           statusHandle (row) {
