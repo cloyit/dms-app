@@ -77,7 +77,7 @@ public class UserController {
      * 获取紧急联系人
      */
     @GetMapping("getEmergencyNumber")
-    @Cacheable(cacheNames = "emergencyNumber")
+    @Cacheable(value = "emergencyNumber")
     @LogAnnotation(module = "User",operation = "Get")
     @ApiOperation("获取紧急联系人")
     public RespBean getEmergencyNumber() {

@@ -89,8 +89,8 @@ public class UserHealthController {
     @LogAnnotation(module = "Health",operation = "Get")
     @ApiOperation("根据uid获取最新的15个健康报表")
     public RespBean getLastUserHealth() {
-//        Long uid = iUserService.getUid();
-        Long uid = 1473527123812581377L;
+        Long uid = iUserService.getUid();
+//        Long uid = 1473527123812581377L;
         List<List<UserHealth>> result = iUserHealthService.getLastUserHealth(uid);
 
         return RespBean.ok("success and detail", result);

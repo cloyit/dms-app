@@ -42,7 +42,6 @@ public class BmiController {
      */
     @PostMapping("uploadBmi")
     @LogAnnotation(module = "Bmi")
-    @CacheEvict(value = "Brand", allEntries = true)
     @ApiOperation("通过名称更新Brand")
     public RespBean updateBrandByName(@RequestBody Bmi bmi) {
         return RespBean.error("weight is String not number");
@@ -54,13 +53,11 @@ public class BmiController {
      */
     @GetMapping("getAllBmi")
     @LogAnnotation(module = "Bmi")
-    @Cacheable(value = "Brand", key = "'All'")
     @ApiOperation("获取所有Brand列表")
     public RespBean getAllBmi() {
-//        User u = iUserService.getUser();
+        User u = iUserService.getUser();
         QueryWrapper<Bmi> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("uid", 1473527123812581377L);
-//        queryWrapper.eq("uid", u.getUid());
+        queryWrapper.eq("uid", u.getUid());
         List<Bmi> bmiList = bmiMapper.selectList(queryWrapper);
         return RespBean.ok("success and new brand is", bmiList);
     }

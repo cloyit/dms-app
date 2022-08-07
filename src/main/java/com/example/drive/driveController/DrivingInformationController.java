@@ -57,10 +57,10 @@ public class DrivingInformationController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime beginTime = LocalDateTime.parse(beginTimeS, formatter);
 
-//        List<List<DrivingInformation>> result = iDrivingInformationService.
-//                getDrivingInformationByDay(iUserService.getUid(), beginTime);
         List<List<DrivingInformation>> result = iDrivingInformationService.
-                getDrivingInformationByDay(1473527123812581377L, beginTime);
+                getDrivingInformationByDay(iUserService.getUid(), beginTime);
+//        List<List<DrivingInformation>> result = iDrivingInformationService.
+//                getDrivingInformationByDay(1473527123812581377L, beginTime);
 
         if (result != null) {
             return RespBean.ok("DrivingInformation are ", result);
@@ -86,10 +86,10 @@ public class DrivingInformationController {
         LocalDateTime beginTime = LocalDateTime.parse(beginTimeS, formatter);
         LocalDateTime endTime = LocalDateTime.parse(endTimeS, formatter);
 
-//        List<List<DrivingInformation>> result = iDrivingInformationService.getDrivingInformationByDay(
-//                iUserService.getUid(), beginTime, endTime);
         List<List<DrivingInformation>> result = iDrivingInformationService.getDrivingInformationByDay(
-                1473527123812581377L, beginTime, endTime);
+                iUserService.getUid(), beginTime, endTime);
+//        List<List<DrivingInformation>> result = iDrivingInformationService.getDrivingInformationByDay(
+//                1473527123812581377L, beginTime, endTime);
 
         if (result != null) {
             return RespBean.ok("DrivingInformation are ", result);
