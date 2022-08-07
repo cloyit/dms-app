@@ -1,5 +1,6 @@
 package com.example.drive.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.drive.aop.LogAnnotation;
 import com.example.drive.entity.Picture;
@@ -9,12 +10,15 @@ import com.example.drive.mapper.UserMapper;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.IUserService;
 import com.example.drive.utills.FastDFSUtil;
+import com.example.drive.utills.ValidateCodeUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -24,7 +28,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author zhulu
@@ -39,10 +46,15 @@ public class UserController {
 
     @Autowired
     PictureMapper pictureMapper;
+
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
+
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    RedisTemplate redisTemplate;
 
 
     /**
@@ -58,6 +70,61 @@ public class UserController {
 
         return RespBean.ok("success It is suggested to improve personal information. The information that can be improved is as follows", user);
     }
+
+
+    @PostMapping("/sendMsg") // sendMsg
+    public RespBean sendMsg(@RequestBody User user){
+        //  获取手机号
+        String phone = user.getTel();
+
+        if (StringUtils.isNotEmpty(phone)){
+            String code = ValidateCodeUtils.generateValidateCode(4).toString();
+
+            // String context = "欢迎使用迅磊餐购，登录验证码为: " + code + ",五分钟内有效，请妥善保管!";
+
+            //发送验证码
+            // SMSUtils.sendMessage("瑞吉外卖", "", phone, context);
+
+            // 将随机生成的验证码保存到session中
+            //session.setAttribute(phone,code);
+
+            redisTemplate.opsForValue().set(phone, code, 5, TimeUnit.MINUTES);
+
+            return RespBean.ok("验证码发送成功!");
+        }
+        return RespBean.error("验证码发送失败!");
+    }
+
+    @PostMapping("/login")
+    public RespBean login(@RequestBody Map map, HttpSession session){
+
+        String phone = map.get("phone").toString();
+        // 获取 验证码
+        String code = map.get("code").toString();
+
+        // Object codeInSession = session.getAttribute(phone);
+        final Object codeInSession = redisTemplate.opsForValue().get(phone);
+
+        //  页面提交的验证码 和 Session中保存的验证码 进行比对
+        if (codeInSession != null && codeInSession.equals(code)){
+            LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+            queryWrapper.eq(User::getTel,phone);
+
+            User user = userService.getOne(queryWrapper);
+            if (user == null){
+                return RespBean.error("登录失败!");
+            }
+            // 用户保存到数据库中后，会自动生成userId,
+            session.setAttribute("user", user.getUid());
+
+            redisTemplate.delete(phone);
+
+            //  需要在浏览器端保存用户信息，故返回的数据类型为 Result<User>
+            return RespBean.ok("successd", user);
+        }
+        return RespBean.error("登录失败!");
+    }
+
 
 
     /**

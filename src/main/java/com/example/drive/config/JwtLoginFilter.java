@@ -30,7 +30,6 @@ import java.util.Date;
 public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
     private final static Logger logger = LoggerFactory.getLogger(JwtLoginFilter.class);
 
-
     protected JwtLoginFilter(String defaultFilterProcessesUrl, AuthenticationManager authenticationManager) {
         super(new AntPathRequestMatcher(defaultFilterProcessesUrl));
         logger.debug("JwtLoginFilter" + "被调用");
