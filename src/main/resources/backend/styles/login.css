@@ -79,12 +79,13 @@
   font-weight: 500;
   font-size: 14px;
   border: 0;
-  background-color: #ffc200;
+  background-color: #0096c7;
 }
 .login-btn:hover,
 .login-btn:focus {
   /* background: #FFC200; */
   /* color: #ffffff; */
+  background: #0096c7;
 }
 .login-form-title {
   height: 36px;
