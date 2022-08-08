@@ -2,7 +2,9 @@ package com.example.drive.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.drive.aop.LogAnnotation;
+import com.example.drive.common.R;
 import com.example.drive.entity.Picture;
 import com.example.drive.entity.User;
 import com.example.drive.mapper.PictureMapper;
@@ -10,15 +12,16 @@ import com.example.drive.mapper.UserMapper;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.IUserService;
 import com.example.drive.utills.FastDFSUtil;
-import com.example.drive.utills.ValidateCodeUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -28,15 +31,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author zhulu
  * @since 2021-12-22
  */
+@Slf4j
 @RestController
 @RequestMapping("/user")
 @Api(tags = "用户信息相关")
@@ -46,15 +47,10 @@ public class UserController {
 
     @Autowired
     PictureMapper pictureMapper;
-
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
-
     @Autowired
     UserMapper userMapper;
-
-    @Autowired
-    RedisTemplate redisTemplate;
 
 
     /**
@@ -62,6 +58,7 @@ public class UserController {
      */
     @PostMapping("/register")
     @LogAnnotation(module = "User",operation = "Add")
+    @CacheEvict(value = "User",allEntries = true)
     @ApiOperation("注册")
     @ApiImplicitParam(name = "user",value = "用户信息",required = true)
     public RespBean register(@RequestBody User user) {
@@ -72,66 +69,12 @@ public class UserController {
     }
 
 
-    @PostMapping("/sendMsg") // sendMsg
-    public RespBean sendMsg(@RequestBody User user){
-        //  获取手机号
-        String phone = user.getTel();
-
-        if (StringUtils.isNotEmpty(phone)){
-            String code = ValidateCodeUtils.generateValidateCode(4).toString();
-
-            // String context = "欢迎使用迅磊餐购，登录验证码为: " + code + ",五分钟内有效，请妥善保管!";
-
-            //发送验证码
-            // SMSUtils.sendMessage("瑞吉外卖", "", phone, context);
-
-            // 将随机生成的验证码保存到session中
-            //session.setAttribute(phone,code);
-
-            redisTemplate.opsForValue().set(phone, code, 5, TimeUnit.MINUTES);
-
-            return RespBean.ok("验证码发送成功!");
-        }
-        return RespBean.error("验证码发送失败!");
-    }
-
-    @PostMapping("/login")
-    public RespBean login(@RequestBody Map map, HttpSession session){
-
-        String phone = map.get("phone").toString();
-        // 获取 验证码
-        String code = map.get("code").toString();
-
-        // Object codeInSession = session.getAttribute(phone);
-        final Object codeInSession = redisTemplate.opsForValue().get(phone);
-
-        //  页面提交的验证码 和 Session中保存的验证码 进行比对
-        if (codeInSession != null && codeInSession.equals(code)){
-            LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
-            queryWrapper.eq(User::getTel,phone);
-
-            User user = userService.getOne(queryWrapper);
-            if (user == null){
-                return RespBean.error("登录失败!");
-            }
-            // 用户保存到数据库中后，会自动生成userId,
-            session.setAttribute("user", user.getUid());
-
-            redisTemplate.delete(phone);
-
-            //  需要在浏览器端保存用户信息，故返回的数据类型为 Result<User>
-            return RespBean.ok("successd", user);
-        }
-        return RespBean.error("登录失败!");
-    }
-
-
-
     /**
      * 更新信息
      */
     @PostMapping("perfectInformation")
     @LogAnnotation(module = "User",operation = "Update")
+    @CacheEvict(value = "User",allEntries = true)
     @ApiOperation("更新信息")
     @ApiImplicitParam(name = "user",value = "用户信息",required = true)
     public RespBean perfectInformation(@RequestBody User user) {
@@ -169,6 +112,7 @@ public class UserController {
      */
     @GetMapping("getUser")
     @LogAnnotation(module = "User",operation = "Get")
+    @Cacheable(value = "User",key = "'now'")
     @ApiOperation("获取当前用户")
     public RespBean getUser() {
         return RespBean.ok("user information is", userService.getUser());
@@ -180,6 +124,7 @@ public class UserController {
      */
     @PostMapping("bindBracelet")
     @LogAnnotation(module = "User",operation = "Update")
+    @CacheEvict(value = "User",allEntries = true)
     @ApiOperation("绑定手环")
     @ApiImplicitParam(name = "bracelet", value = "绑定手环", required = true)
     public RespBean bindBracelet(Integer bracelet) {
@@ -195,6 +140,7 @@ public class UserController {
      */
     @GetMapping("getBracelet")
     @LogAnnotation(module = "User",operation = "Get")
+    @Cacheable(value = "User",key = "'bracelet'")
     @ApiOperation("获取手环信息")
     public RespBean getBracelet() {
         User u = userService.getUser();
@@ -229,6 +175,7 @@ public class UserController {
      */
     @GetMapping("updatePassword")
     @LogAnnotation(module = "User",operation = "Update")
+    @CacheEvict(value = "User",key = "'now'")
     @ApiOperation("更新密码")
     @ApiImplicitParam(name = "password", value = "更新后的密码", required = true)
     public RespBean updatePassword(String password) {
@@ -242,5 +189,34 @@ public class UserController {
         } else {
             return RespBean.error("passowrd error");
         }
+    }
+
+    /**
+     * 构造分页器
+     * @param page
+     * @param pageSize
+     * @param name
+     * @return
+     */
+    @ApiOperation("构造分页器")
+    @ApiImplicitParams({
+            @ApiImplicitParam( name = "page", value = "页数", required = true),
+            @ApiImplicitParam(name = "pageSize", value = "页面大小", required = true),
+            @ApiImplicitParam(name = "name", value = "搜索姓名", required = true)})
+    @GetMapping("/page")
+    public R<Page> page(int page, int pageSize, String name){
+        log.info("page = {}, pageSize = {}, name = {}",page,pageSize,name);
+        //构造分页构造器
+        Page pageInfo = new Page(page,pageSize);
+        //构造条件构造器
+        final LambdaQueryWrapper<User> queryWrapper =  new LambdaQueryWrapper<>();
+        //添加过滤条件
+        //什么时候name会为空？首次访问列表页面时
+        queryWrapper.like(StringUtils.isNotEmpty(name),User::getName,name);
+        //添加排序条件
+        //queryWrapper.orderByDesc(user);
+        //执行查询
+        userService.page(pageInfo,queryWrapper);
+        return R.success(pageInfo);
     }
 }

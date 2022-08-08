@@ -17,6 +17,8 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -87,10 +89,10 @@ public class UserHealthController {
      */
     @GetMapping("getLastUserHealth")
     @LogAnnotation(module = "Health",operation = "Get")
+    @Cacheable(value = "UserHealth",key = "'Last'")
     @ApiOperation("根据uid获取最新的15个健康报表")
     public RespBean getLastUserHealth() {
         Long uid = iUserService.getUid();
-//        Long uid = 1473527123812581377L;
         List<List<UserHealth>> result = iUserHealthService.getLastUserHealth(uid);
 
         return RespBean.ok("success and detail", result);
@@ -102,6 +104,7 @@ public class UserHealthController {
      */
     @PostMapping("uploadDriving")
     @LogAnnotation(module = "Health",operation = "Upload")
+    @CacheEvict(value = "UserHealth",allEntries = true)
     @ApiOperation("上传摄像头采集的数据")
     @ApiImplicitParam(name = "drivingInformation", value = "驾驶信息对象", required = true)
     public RespBean uploadDriving(@RequestBody DrivingInformation drivingInformation) {
@@ -115,6 +118,7 @@ public class UserHealthController {
      */
     @GetMapping("getReport")
     @LogAnnotation(module = "Health",operation = "Get")
+    @CacheEvict(value = "UserHealth",allEntries = true)
     @ApiOperation("上传摄像头采集的数据")
     public RespBean getReport() {
         User user = iUserService.getUser();

@@ -1,9 +1,10 @@
-package com.example.drive.common;
+package com.example.dmsapp.common;
 
-public class CustomException extends RuntimeException{
-
-    public CustomException(String msg) {
-        super(msg);
+/**
+ * 自定义异常类
+ */
+public class CustomException extends RuntimeException {
+    public CustomException(String message) {
+        super(message);
     }
-
 }

@@ -1,0 +1,350 @@
+2022-08-08 00:08:49.065  INFO 39748 --- [main] com.example.drive.DriveApplication       : Starting DriveApplication using Java 1.8.0_191 on LAPTOP-2Q9V9B1L with PID 39748 (D:\shixi\dms-app1\target\classes started by Lenovo in D:\shixi\dms-app1)
+2022-08-08 00:08:49.077  INFO 39748 --- [main] com.example.drive.DriveApplication       : No active profile set, falling back to default profiles: default
+2022-08-08 00:08:50.220  INFO 39748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-08-08 00:08:50.223  INFO 39748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-08-08 00:08:50.253  INFO 39748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
+2022-08-08 00:08:51.132  INFO 39748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9097 (http)
+2022-08-08 00:08:51.142  INFO 39748 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-08 00:08:51.142  INFO 39748 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-08-08 00:08:51.266  INFO 39748 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-08 00:08:51.266  INFO 39748 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2112 ms
+2022-08-08 00:08:55.281  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/js/**'] with []
+2022-08-08 00:08:55.282  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/css/**'] with []
+2022-08-08 00:08:55.282  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/img/**'] with []
+2022-08-08 00:08:55.282  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-08-08 00:08:55.282  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/lang/*.json'] with []
+2022-08-08 00:08:55.282  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.css'] with []
+2022-08-08 00:08:55.282  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-08-08 00:08:55.282  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.map'] with []
+2022-08-08 00:08:55.283  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.html'] with []
+2022-08-08 00:08:55.283  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.png'] with []
+2022-08-08 00:08:55.283  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/v2/api-docs', GET] with []
+2022-08-08 00:08:55.283  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources', GET] with []
+2022-08-08 00:08:55.283  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources/**', GET] with []
+2022-08-08 00:08:55.283  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/ui', GET] with []
+2022-08-08 00:08:55.283  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/security', GET] with []
+2022-08-08 00:08:55.283  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html/**', GET] with []
+2022-08-08 00:08:55.283  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**', GET] with []
+2022-08-08 00:08:55.283  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/temp', GET] with []
+2022-08-08 00:08:55.316  INFO 39748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4beae1e3, org.springframework.security.web.context.SecurityContextPersistenceFilter@45b96e4c, org.springframework.security.web.header.HeaderWriterFilter@32b46831, org.springframework.web.filter.CorsFilter@3c488b34, org.springframework.security.web.authentication.logout.LogoutFilter@45e11627, com.example.drive.config.JwtLoginFilter@32e697ac, com.example.drive.config.JwtFilter@3866c96e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7dd45c93, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@16b64a03, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@241fc278, org.springframework.security.web.session.SessionManagementFilter@320ff86f, org.springframework.security.web.access.ExceptionTranslationFilter@4492b393, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@c318864]
+2022-08-08 00:08:55.462  INFO 39748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9097 (http) with context path ''
+2022-08-08 00:08:55.634  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.644  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.644  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.647  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.662  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.665  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.668  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.675  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.678  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.678  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.680  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.693  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.696  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.696  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.701  WARN 39748 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 00:08:55.709  WARN 39748 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 00:08:55.720  WARN 39748 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.example.drive.entity.Employee>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.example.drive.entity.Employee>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 00:08:55.725  WARN 39748 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.example.drive.entity.Employee>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.example.drive.entity.Employee>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 00:08:55.733  WARN 39748 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<java.lang.String>) -> ModelContext{groupName=default, type=com.example.drive.common.R<java.lang.String>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 00:08:55.735  WARN 39748 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<java.lang.String>) -> ModelContext{groupName=default, type=com.example.drive.common.R<java.lang.String>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 00:08:55.749  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.749  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.753  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.768  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.771  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.773  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.775  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.779  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.779  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.783  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.789  WARN 39748 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 00:08:55.803  INFO 39748 --- [main] com.example.drive.DriveApplication       : Started DriveApplication in 7.285 seconds (JVM running for 9.373)
+2022-08-08 01:29:27.202  INFO 7436 --- [main] com.example.drive.DriveApplication       : Starting DriveApplication using Java 1.8.0_312 on DESKTOP-MRDO33T with PID 7436 (C:\Users\Administrator\IdeaProjects\dms-app3\target\classes started by Administrator in C:\Users\Administrator\IdeaProjects\dms-app3)
+2022-08-08 01:29:27.255  INFO 7436 --- [main] com.example.drive.DriveApplication       : No active profile set, falling back to default profiles: default
+2022-08-08 01:29:32.353  INFO 7436 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-08-08 01:29:32.362  INFO 7436 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-08-08 01:29:32.470  INFO 7436 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 0 Redis repository interfaces.
+2022-08-08 01:29:35.263  INFO 7436 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9097 (http)
+2022-08-08 01:29:35.283  INFO 7436 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-08 01:29:35.283  INFO 7436 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-08-08 01:29:35.619  INFO 7436 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-08 01:29:35.620  INFO 7436 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 8207 ms
+2022-08-08 01:29:45.619  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/js/**'] with []
+2022-08-08 01:29:45.621  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/css/**'] with []
+2022-08-08 01:29:45.622  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/img/**'] with []
+2022-08-08 01:29:45.622  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-08-08 01:29:45.623  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/lang/*.json'] with []
+2022-08-08 01:29:45.623  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.css'] with []
+2022-08-08 01:29:45.624  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-08-08 01:29:45.624  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.map'] with []
+2022-08-08 01:29:45.625  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.html'] with []
+2022-08-08 01:29:45.625  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.png'] with []
+2022-08-08 01:29:45.625  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/v2/api-docs', GET] with []
+2022-08-08 01:29:45.626  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources', GET] with []
+2022-08-08 01:29:45.626  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources/**', GET] with []
+2022-08-08 01:29:45.626  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/ui', GET] with []
+2022-08-08 01:29:45.628  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/security', GET] with []
+2022-08-08 01:29:45.629  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html/**', GET] with []
+2022-08-08 01:29:45.629  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**', GET] with []
+2022-08-08 01:29:45.630  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/temp', GET] with []
+2022-08-08 01:29:45.631  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/employee/login', GET] with []
+2022-08-08 01:29:45.632  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/employee/logout', GET] with []
+2022-08-08 01:29:45.761  INFO 7436 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c488b34, org.springframework.security.web.context.SecurityContextPersistenceFilter@8383a14, org.springframework.security.web.header.HeaderWriterFilter@5353dd09, org.springframework.web.filter.CorsFilter@32e697ac, org.springframework.security.web.authentication.logout.LogoutFilter@ec5f944, com.example.drive.config.JwtLoginFilter@3866c96e, com.example.drive.config.JwtFilter@241fc278, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@374b6e33, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1584c019, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5c76fce4, org.springframework.security.web.session.SessionManagementFilter@192b472d, org.springframework.security.web.access.ExceptionTranslationFilter@55fb36de, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7d61468c]
+2022-08-08 01:29:46.513  INFO 7436 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9097 (http) with context path ''
+2022-08-08 01:29:47.127  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.206  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.208  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.221  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.293  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.306  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.319  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.348  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.369  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.371  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.387  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.464  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.484  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.486  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.514  WARN 7436 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:29:47.552  WARN 7436 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:29:47.609  WARN 7436 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.example.drive.entity.Employee>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.example.drive.entity.Employee>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:29:47.629  WARN 7436 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.example.drive.entity.Employee>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.example.drive.entity.Employee>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:29:47.705  WARN 7436 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<java.lang.String>) -> ModelContext{groupName=default, type=com.example.drive.common.R<java.lang.String>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:29:47.709  WARN 7436 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<java.lang.String>) -> ModelContext{groupName=default, type=com.example.drive.common.R<java.lang.String>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:29:47.743  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.744  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.762  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.763  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.764  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.772  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.814  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.825  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.832  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.840  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.855  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.856  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.876  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.906  WARN 7436 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:29:47.963  INFO 7436 --- [main] com.example.drive.DriveApplication       : Started DriveApplication in 22.037 seconds (JVM running for 24.689)
+2022-08-08 01:29:48.097  INFO 7436 --- [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-08 01:29:48.097  INFO 7436 --- [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-08 01:29:48.102  INFO 7436 --- [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2022-08-08 01:37:10.673  INFO 16356 --- [main] com.example.drive.DriveApplication       : Starting DriveApplication using Java 1.8.0_312 on DESKTOP-MRDO33T with PID 16356 (C:\Users\Administrator\IdeaProjects\dms-app3\target\classes started by Administrator in C:\Users\Administrator\IdeaProjects\dms-app3)
+2022-08-08 01:37:10.677  INFO 16356 --- [main] com.example.drive.DriveApplication       : No active profile set, falling back to default profiles: default
+2022-08-08 01:37:14.079  INFO 16356 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-08-08 01:37:14.087  INFO 16356 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-08-08 01:37:14.233  INFO 16356 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 0 Redis repository interfaces.
+2022-08-08 01:37:16.801  INFO 16356 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9097 (http)
+2022-08-08 01:37:16.852  INFO 16356 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-08 01:37:16.854  INFO 16356 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-08-08 01:37:17.255  INFO 16356 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-08 01:37:17.256  INFO 16356 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6480 ms
+2022-08-08 01:37:24.904  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/js/**'] with []
+2022-08-08 01:37:24.905  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/css/**'] with []
+2022-08-08 01:37:24.906  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/img/**'] with []
+2022-08-08 01:37:24.906  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-08-08 01:37:24.906  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/lang/*.json'] with []
+2022-08-08 01:37:24.907  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.css'] with []
+2022-08-08 01:37:24.907  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-08-08 01:37:24.907  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.map'] with []
+2022-08-08 01:37:24.907  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.html'] with []
+2022-08-08 01:37:24.908  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.png'] with []
+2022-08-08 01:37:24.908  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/v2/api-docs', POST] with []
+2022-08-08 01:37:24.908  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources', POST] with []
+2022-08-08 01:37:24.908  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources/**', POST] with []
+2022-08-08 01:37:24.908  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/ui', POST] with []
+2022-08-08 01:37:24.909  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/security', POST] with []
+2022-08-08 01:37:24.909  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html/**', POST] with []
+2022-08-08 01:37:24.909  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**', POST] with []
+2022-08-08 01:37:24.909  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/temp', POST] with []
+2022-08-08 01:37:24.909  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/employee/login', POST] with []
+2022-08-08 01:37:24.910  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/employee/logout', POST] with []
+2022-08-08 01:37:24.977  INFO 16356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@144a5e6e, org.springframework.security.web.context.SecurityContextPersistenceFilter@5b4954b2, org.springframework.security.web.header.HeaderWriterFilter@266da047, org.springframework.web.filter.CorsFilter@2707c790, org.springframework.security.web.authentication.logout.LogoutFilter@59baf2c7, com.example.drive.config.JwtLoginFilter@7de3206d, com.example.drive.config.JwtFilter@6dece1f9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@74d22ddd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@844e66d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2b936b04, org.springframework.security.web.session.SessionManagementFilter@d84418a, org.springframework.security.web.access.ExceptionTranslationFilter@1a2724d3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2bc16fe2]
+2022-08-08 01:37:25.295  INFO 16356 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9097 (http) with context path ''
+2022-08-08 01:37:25.664  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.707  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.708  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.721  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.789  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.801  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.811  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.839  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.850  INFO 16356 --- [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-08 01:37:25.851  INFO 16356 --- [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-08 01:37:25.854  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.855  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.857  INFO 16356 --- [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2022-08-08 01:37:25.869  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.925  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.935  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.936  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:25.955  WARN 16356 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:37:25.984  WARN 16356 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:37:26.025  WARN 16356 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.example.drive.entity.Employee>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.example.drive.entity.Employee>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:37:26.037  WARN 16356 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.example.drive.entity.Employee>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.example.drive.entity.Employee>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:37:26.075  WARN 16356 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<java.lang.String>) -> ModelContext{groupName=default, type=com.example.drive.common.R<java.lang.String>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:37:26.083  WARN 16356 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<java.lang.String>) -> ModelContext{groupName=default, type=com.example.drive.common.R<java.lang.String>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:37:26.120  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.121  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.137  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.137  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.138  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.143  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.210  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.221  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.228  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.241  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.256  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.257  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.271  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.286  WARN 16356 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:37:26.332  INFO 16356 --- [main] com.example.drive.DriveApplication       : Started DriveApplication in 16.694 seconds (JVM running for 19.218)
+2022-08-08 01:37:28.069  INFO 16356 --- [http-nio-9097-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-08-08 01:37:41.373  INFO 16356 --- [http-nio-9097-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-08-08 01:42:06.134  INFO 16356 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-08-08 01:42:06.146  INFO 16356 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-08-08 01:42:18.639  INFO 17376 --- [main] com.example.drive.DriveApplication       : Starting DriveApplication using Java 1.8.0_312 on DESKTOP-MRDO33T with PID 17376 (C:\Users\Administrator\IdeaProjects\dms-app3\target\classes started by Administrator in C:\Users\Administrator\IdeaProjects\dms-app3)
+2022-08-08 01:42:18.643  INFO 17376 --- [main] com.example.drive.DriveApplication       : No active profile set, falling back to default profiles: default
+2022-08-08 01:42:20.582  INFO 17376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-08-08 01:42:20.587  INFO 17376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-08-08 01:42:20.654  INFO 17376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 0 Redis repository interfaces.
+2022-08-08 01:42:22.303  INFO 17376 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9097 (http)
+2022-08-08 01:42:22.317  INFO 17376 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-08 01:42:22.317  INFO 17376 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-08-08 01:42:22.506  INFO 17376 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-08 01:42:22.507  INFO 17376 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3729 ms
+2022-08-08 01:42:29.141  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/js/**'] with []
+2022-08-08 01:42:29.142  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/css/**'] with []
+2022-08-08 01:42:29.144  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/img/**'] with []
+2022-08-08 01:42:29.145  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-08-08 01:42:29.146  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/lang/*.json'] with []
+2022-08-08 01:42:29.147  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.css'] with []
+2022-08-08 01:42:29.148  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-08-08 01:42:29.148  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.map'] with []
+2022-08-08 01:42:29.148  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.html'] with []
+2022-08-08 01:42:29.149  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.png'] with []
+2022-08-08 01:42:29.149  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/v2/api-docs'] with []
+2022-08-08 01:42:29.150  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources'] with []
+2022-08-08 01:42:29.150  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources/**'] with []
+2022-08-08 01:42:29.151  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/ui'] with []
+2022-08-08 01:42:29.152  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/security'] with []
+2022-08-08 01:42:29.152  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html/**'] with []
+2022-08-08 01:42:29.153  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**'] with []
+2022-08-08 01:42:29.153  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/temp'] with []
+2022-08-08 01:42:29.153  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/employee/login'] with []
+2022-08-08 01:42:29.154  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/employee/logout'] with []
+2022-08-08 01:42:29.272  INFO 17376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@144a5e6e, org.springframework.security.web.context.SecurityContextPersistenceFilter@5b4954b2, org.springframework.security.web.header.HeaderWriterFilter@266da047, org.springframework.web.filter.CorsFilter@2707c790, org.springframework.security.web.authentication.logout.LogoutFilter@59baf2c7, com.example.drive.config.JwtLoginFilter@7de3206d, com.example.drive.config.JwtFilter@6dece1f9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@74d22ddd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@844e66d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2b936b04, org.springframework.security.web.session.SessionManagementFilter@d84418a, org.springframework.security.web.access.ExceptionTranslationFilter@1a2724d3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2bc16fe2]
+2022-08-08 01:42:29.739  INFO 17376 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9097 (http) with context path ''
+2022-08-08 01:42:29.987  INFO 17376 --- [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-08 01:42:29.988  INFO 17376 --- [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-08 01:42:29.998  INFO 17376 --- [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2022-08-08 01:42:30.325  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.374  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.375  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.387  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.439  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.448  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.455  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.484  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.497  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.499  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.507  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.567  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.585  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.586  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.611  WARN 17376 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:42:30.642  WARN 17376 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:42:30.678  WARN 17376 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.example.drive.entity.Employee>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.example.drive.entity.Employee>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:42:30.692  WARN 17376 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.example.drive.entity.Employee>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.example.drive.entity.Employee>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:42:30.744  WARN 17376 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<java.lang.String>) -> ModelContext{groupName=default, type=com.example.drive.common.R<java.lang.String>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:42:30.748  WARN 17376 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<java.lang.String>) -> ModelContext{groupName=default, type=com.example.drive.common.R<java.lang.String>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:42:30.781  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.783  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.806  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.807  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.808  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.818  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.871  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.879  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.885  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.891  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.901  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.902  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.917  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:30.968  WARN 17376 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:42:31.016  INFO 17376 --- [main] com.example.drive.DriveApplication       : Started DriveApplication in 13.264 seconds (JVM running for 15.318)
+2022-08-08 01:42:31.968  INFO 17376 --- [http-nio-9097-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-08-08 01:42:35.719  INFO 17376 --- [http-nio-9097-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-08-08 01:43:56.525  INFO 17376 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-08-08 01:43:56.535  INFO 17376 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-08-08 01:44:10.590  INFO 16884 --- [main] com.example.drive.DriveApplication       : Starting DriveApplication using Java 1.8.0_312 on DESKTOP-MRDO33T with PID 16884 (C:\Users\Administrator\IdeaProjects\dms-app3\target\classes started by Administrator in C:\Users\Administrator\IdeaProjects\dms-app3)
+2022-08-08 01:44:10.594  INFO 16884 --- [main] com.example.drive.DriveApplication       : No active profile set, falling back to default profiles: default
+2022-08-08 01:44:12.706  INFO 16884 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-08-08 01:44:12.711  INFO 16884 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-08-08 01:44:12.780  INFO 16884 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 0 Redis repository interfaces.
+2022-08-08 01:44:14.328  INFO 16884 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9097 (http)
+2022-08-08 01:44:14.348  INFO 16884 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-08 01:44:14.349  INFO 16884 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-08-08 01:44:14.518  INFO 16884 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-08 01:44:14.520  INFO 16884 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3850 ms
+2022-08-08 01:44:20.673  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/js/**'] with []
+2022-08-08 01:44:20.674  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/css/**'] with []
+2022-08-08 01:44:20.674  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='*/img/**'] with []
+2022-08-08 01:44:20.675  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-08-08 01:44:20.675  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/lang/*.json'] with []
+2022-08-08 01:44:20.675  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.css'] with []
+2022-08-08 01:44:20.676  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-08-08 01:44:20.676  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.map'] with []
+2022-08-08 01:44:20.676  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.html'] with []
+2022-08-08 01:44:20.676  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.png'] with []
+2022-08-08 01:44:20.677  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/v2/api-docs'] with []
+2022-08-08 01:44:20.677  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources'] with []
+2022-08-08 01:44:20.677  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources/**'] with []
+2022-08-08 01:44:20.677  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/ui'] with []
+2022-08-08 01:44:20.677  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/security'] with []
+2022-08-08 01:44:20.677  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html/**'] with []
+2022-08-08 01:44:20.678  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**'] with []
+2022-08-08 01:44:20.678  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/temp'] with []
+2022-08-08 01:44:20.678  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/employee/login'] with []
+2022-08-08 01:44:20.678  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/employee/logout'] with []
+2022-08-08 01:44:20.725  INFO 16884 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@34549979, org.springframework.security.web.context.SecurityContextPersistenceFilter@ec5f944, org.springframework.security.web.header.HeaderWriterFilter@5ef2cbe6, org.springframework.web.filter.CorsFilter@144a5e6e, org.springframework.security.web.authentication.logout.LogoutFilter@709d86a2, com.example.drive.config.JwtLoginFilter@2707c790, com.example.drive.config.JwtFilter@7de3206d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7d1f3fe9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7b451bf4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6dece1f9, org.springframework.security.web.session.SessionManagementFilter@68b7bdcb, org.springframework.security.web.access.ExceptionTranslationFilter@726a8729, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@65753724]
+2022-08-08 01:44:21.042  INFO 16884 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9097 (http) with context path ''
+2022-08-08 01:44:21.655  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.691  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.692  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.701  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.753  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.765  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.777  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.798  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.809  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.810  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.817  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.855  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.863  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.863  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:21.879  WARN 16884 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:44:21.906  WARN 16884 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.baomidou.mybatisplus.extension.plugins.pagination.Page>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:44:21.945  WARN 16884 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.example.drive.entity.Employee>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.example.drive.entity.Employee>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:44:21.960  WARN 16884 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<com.example.drive.entity.Employee>) -> ModelContext{groupName=default, type=com.example.drive.common.R<com.example.drive.entity.Employee>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:44:22.015  WARN 16884 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<java.lang.String>) -> ModelContext{groupName=default, type=com.example.drive.common.R<java.lang.String>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:44:22.018  WARN 16884 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(com.example.drive.common.R<java.lang.String>) -> ModelContext{groupName=default, type=com.example.drive.common.R<java.lang.String>, isReturnType=true, view=Optional.empty}. 1
+2022-08-08 01:44:22.052  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.053  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.072  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.073  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.074  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.080  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.157  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.166  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.172  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.178  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.188  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.189  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.208  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.227  WARN 16884 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-08-08 01:44:22.257  INFO 16884 --- [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-08 01:44:22.257  INFO 16884 --- [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-08 01:44:22.262  INFO 16884 --- [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2022-08-08 01:44:22.269  INFO 16884 --- [main] com.example.drive.DriveApplication       : Started DriveApplication in 12.387 seconds (JVM running for 14.133)

@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @since 2021-12-22
  */
 
-public interface IUserService extends IService<User> {
+public interface IUserService  extends IService<User> {
     void register(User u);
     void perfectInformation(User u);
     Long getUid();
