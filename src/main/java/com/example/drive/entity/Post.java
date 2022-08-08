@@ -25,7 +25,7 @@ public class Post implements Serializable {
     private Integer category;
 
     /**
-     * 审核状态
+     * 审核状态 0未通过、1已通过，0未通过
      */
     private Integer status;
 
@@ -45,5 +45,17 @@ public class Post implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT)
     private Integer createUser;
+
+    /**
+     * 审核人
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Integer updateUser;
+
+    /**
+     * 审核时间
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Integer updateTime;
 
 }

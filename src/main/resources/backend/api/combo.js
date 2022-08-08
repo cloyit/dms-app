@@ -1,7 +1,7 @@
 // 查询列表数据
 const getSetmealPage = (params) => {
   return $axios({
-    url: '/setmeal/page',
+    url: '/post/page',
     method: 'get',
     params
   })
@@ -42,10 +42,10 @@ const querySetmealById = (id) => {
   })
 }
 
-// 批量起售禁售
+// 批量审核
 const setmealStatusByStatus = (params) => {
   return $axios({
-    url: `/setmeal/status/${params.status}`,
+    url: `/post/status/${params.status}`,
     method: 'post',
     params: { ids: params.ids }
   })

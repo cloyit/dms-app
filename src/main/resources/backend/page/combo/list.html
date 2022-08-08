@@ -16,7 +16,7 @@
       <div class="tableBar">
         <el-input
           v-model="input"
-          placeholder="请输入套餐名称"
+          placeholder="请输入帖子内容"
           style="width: 250px"
           clearable
           @keyup.enter.native="handleQuery"
@@ -29,19 +29,12 @@
           ></i>
         </el-input>
         <div class="tableLab">
-          <span class="span-btn delBut non" @click="deleteHandle('批量')">批量删除</span>
-          <span class="span-btn blueBug non" @click="statusHandle('1')">批量启售</span>
+          <span class="span-btn blueBug non" @click="statusHandle('1')">批量通过</span>
           <span
             style="border:none;"
             class="span-btn delBut non"
             @click="statusHandle('0')"
-          >批量停售</span>
-          <el-button
-            type="primary"
-            @click="addSetMeal('add')"
-          >
-            + 新建套餐
-          </el-button>
+          >批量不通过</span>
         </div>
       </div>
       <el-table
@@ -55,34 +48,43 @@
           width="25"
         ></el-table-column>
         <el-table-column
-          prop="name"
-          label="套餐名称"
+          prop="id"
+          label="帖子id"
         ></el-table-column>
-        <el-table-column prop="image" label="图片"  align="center">
+<!--        <el-table-column prop="image" label="图片"  align="center">-->
+<!--          <template slot-scope="{ row }">-->
+<!--            <el-image style="width: auto; height: 40px; border:none;cursor: pointer;" :src="getImage(row.image)" :preview-src-list="[ `/common/download?name=${row.image}` ]" >-->
+<!--              <div slot="error" class="image-slot">-->
+<!--                <img src="./../../images/noImg.png"  style="width: auto; height: 40px; border:none;" >-->
+<!--              </div> -->
+<!--            </el-image>-->
+<!--          </template>-->
+<!--        </el-table-column>-->
+        <el-table-column
+          prop="category"
+          label="话题分类"
+        ></el-table-column>
+        <el-table-column
+            prop="content"
+            label="帖子内容"
+        ></el-table-column>
+        <el-table-column label="审核状态">
           <template slot-scope="{ row }">
-            <el-image style="width: auto; height: 40px; border:none;cursor: pointer;" :src="getImage(row.image)" :preview-src-list="[ `/common/download?name=${row.image}` ]" >
-              <div slot="error" class="image-slot">
-                <img src="./../../images/noImg.png"  style="width: auto; height: 40px; border:none;" >
-              </div> 
-            </el-image>
+<!--            <span>{{ scope.row.status == '0' ? '通过' : '不通过' }}</span>-->
+            <span v-if="row.status===0">待审核</span>
+            <span v-if="row.status===1">通过</span>
+            <span v-if="row.status===2">不通过</span>
           </template>
         </el-table-column>
         <el-table-column
-          prop="categoryName"
-          label="套餐分类"
-        ></el-table-column>
-        <el-table-column
-          prop="price"
-          label="套餐价"
+            prop="createTime"
+            label="发帖时间"
         >
-          <template slot-scope="scope">
-            <span>￥{{ scope.row.price/100 }}</span>
-          </template>
         </el-table-column>
-        <el-table-column label="售卖状态">
-          <template slot-scope="scope">
-            <span>{{ scope.row.status == '0' ? '停售' : '启售' }}</span>
-          </template>
+        <el-table-column
+            prop="createUser"
+            label="发帖人"
+        >
         </el-table-column>
         <el-table-column
           prop="updateTime"
@@ -99,25 +101,9 @@
               type="text"
               size="small"
               class="blueBug"
-              @click="addSetMeal(scope.row.id)"
-            >
-              修改
-            </el-button>
-            <el-button
-              type="text"
-              size="small"
-              class="blueBug"
               @click="statusHandle(scope.row)"
             >
-              {{ scope.row.status == '0' ? '启售' : '停售' }}
-            </el-button>
-            <el-button
-              type="text"
-              size="small"
-              class="delBut non"
-              @click="deleteHandle('单删', scope.row.id)"
-            >
-              删除
+              {{ scope.row.status == '0' ? '通过' : '不通过' }}
             </el-button>
           </template>
         </el-table-column>
@@ -185,23 +171,6 @@
             this.page = 1;
             this.init();
           },
-          // 添加
-          addSetMeal (st) {
-            if (st === 'add'){
-              window.parent.menuHandle({
-                id: '5',
-                url: '/backend/page/combo/add.html',
-                name: '添加套餐'
-              },true)
-            } else {
-              window.parent.menuHandle({
-                id: '5',
-                url: '/backend/page/combo/add.html?id='+st,
-                name: '修改套餐'
-              },true)
-            }
-          },
-
           // 删除
           deleteHandle (type, id) {
             if (type === '批量' && id === null) {
@@ -231,7 +200,7 @@
             let params = {}
             if (typeof row === 'string' ){
               if (this.checkList.length == 0){
-                this.$message.error('批量操作，请先勾选操作菜品！')
+                this.$message.error('批量操作，请先勾选操作帖子！')
                 return false
               }
               params.ids = this.checkList.join(',')
@@ -240,7 +209,7 @@
               params.ids = row.id
               params.status = row.status ? '0' : '1'
             }
-            this.$confirm('确认更改该套餐状态?', '提示', {
+            this.$confirm('确认更改该帖子状态?', '提示', {
               'confirmButtonText': '确定',
               'cancelButtonText': '取消',
               'type': 'warning'
