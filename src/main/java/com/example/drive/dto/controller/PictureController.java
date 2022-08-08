@@ -1,4 +1,4 @@
-package com.example.drive.controller;
+package com.example.drive.dto.controller;
 
 import com.example.drive.aop.LogAnnotation;
 import com.example.drive.entity.Picture;
