@@ -1,11 +1,11 @@
-package com.example.dmsapp.service.impl;
+package com.example.drive.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.dmsapp.common.CustomException;
-import com.example.dmsapp.entity.Category;
-import com.example.dmsapp.mapper.CategoryMapper;
-import com.example.dmsapp.service.CategoryService;
+import com.example.drive.common.CustomException;
+import com.example.drive.entity.Category;
+import com.example.drive.mapper.CategoryMapper;
+import com.example.drive.service.CategoryService;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,7 +1,7 @@
-package com.example.dmsapp.mapper;
+package com.example.drive.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.dmsapp.entity.Post;
+import com.example.drive.entity.Post;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

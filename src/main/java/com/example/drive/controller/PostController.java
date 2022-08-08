@@ -1,9 +1,9 @@
-package com.example.dmsapp.controller;
+package com.example.drive.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.example.dmsapp.common.R;
-import com.example.dmsapp.entity.Post;
-import com.example.dmsapp.service.PostService;
+import com.example.drive.common.R;
+import com.example.drive.entity.Post;
+import com.example.drive.service.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

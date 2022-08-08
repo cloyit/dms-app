@@ -1,7 +1,7 @@
-package com.example.dmsapp.service;
+package com.example.drive.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.dmsapp.entity.Post;
+import com.example.drive.entity.Post;
 
 public interface PostService extends IService<Post> {
 }

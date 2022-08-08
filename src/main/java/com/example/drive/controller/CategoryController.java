@@ -1,10 +1,10 @@
-package com.example.dmsapp.controller;
+package com.example.drive.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.dmsapp.common.R;
-import com.example.dmsapp.entity.Category;
-import com.example.dmsapp.service.CategoryService;
+import com.example.drive.common.R;
+import com.example.drive.entity.Category;
+import com.example.drive.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

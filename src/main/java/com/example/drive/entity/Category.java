@@ -1,4 +1,4 @@
-package com.example.dmsapp.entity;
+package com.example.drive.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
