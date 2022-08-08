@@ -1,4 +1,4 @@
-package com.example.dmsapp.entity;
+package com.example.driver.entity;
 
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
