@@ -62,7 +62,8 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
          * 如果自定义过滤器，将自定义的过滤器加入到 Spring Security 过滤器链中，也实现了添加登录验证码功能
          * 但是这种方式是有弊端的，就是破坏了原有的过滤器链，请求每次都要走一遍验证码过滤器，这样不合理。
          */
-        return getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+        return getAuthenticationManager().authenticate(
+                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
     }
 
     // JWT验证成功后执行这个

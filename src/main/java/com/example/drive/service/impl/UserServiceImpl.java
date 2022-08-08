@@ -97,11 +97,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         String[] result = null;
         int num = pictureMapper.selectCount(null);
 
-        try {
-            result = FastDFSUtil.upload(file.getBytes(), "" + (num + 1) + ".jpg");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            result = FastDFSUtil.upload(file.getBytes(), "" + (num + 1) + ".jpg");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         picture.setUrl("http://47.102.99.215/" + result[0] + "/" + result[1]);
         picture.setHref("http://47.102.99.215/" + result[0] + "/" + result[1]);
 

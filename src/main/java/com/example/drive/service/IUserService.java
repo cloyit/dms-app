@@ -1,5 +1,6 @@
 package com.example.drive.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.drive.entity.Picture;
 import com.example.drive.entity.User;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @since 2021-12-22
  */
 
-public interface IUserService  {
+public interface IUserService  extends IService<User> {
     void register(User u);
     void perfectInformation(User u);
     Long getUid();

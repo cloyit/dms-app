@@ -105,11 +105,11 @@ public class DrivingInformationServiceImpl extends ServiceImpl<DrivingInformatio
         String[] result = null;
         int num = dpictureMapper.selectCount(null);
 
-        try {
-            result = FastDFSUtil.upload(file.getBytes(), "" + (num + 1) + ".jpg");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            result = FastDFSUtil.upload(file.getBytes(), "" + (num + 1) + ".jpg");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         dpicture.setUrl("http://47.102.99.215/" + result[0] + "/" + result[1]);
         dpictureMapper.insert(dpicture);
         return dpicture;
