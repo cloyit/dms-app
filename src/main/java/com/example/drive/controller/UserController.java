@@ -2,22 +2,30 @@ package com.example.drive.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.drive.aop.LogAnnotation;
 import com.example.drive.common.R;
+import com.example.drive.dto.Userdto;
 import com.example.drive.entity.Picture;
+import com.example.drive.entity.Post;
 import com.example.drive.entity.User;
 import com.example.drive.mapper.PictureMapper;
 import com.example.drive.mapper.UserMapper;
 import com.example.drive.response.RespBean;
 import com.example.drive.service.IUserService;
-import com.example.drive.utills.FastDFSUtil;
+
+
+import com.example.drive.service.PostService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -31,8 +39,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.io.IOException;
-
 /**
  * @author zhulu
  * @since 2021-12-22
@@ -44,6 +50,8 @@ import java.io.IOException;
 public class UserController {
     @Autowired
     IUserService userService;
+    @Autowired
+    PostService postService;
 
     @Autowired
     PictureMapper pictureMapper;
@@ -51,6 +59,8 @@ public class UserController {
     BCryptPasswordEncoder passwordEncoder;
     @Autowired
     UserMapper userMapper;
+
+
 
 
     /**
@@ -205,18 +215,55 @@ public class UserController {
             @ApiImplicitParam(name = "name", value = "搜索姓名", required = true)})
     @GetMapping("/page")
     public R<Page> page(int page, int pageSize, String name){
-        log.info("page = {}, pageSize = {}, name = {}",page,pageSize,name);
-        //构造分页构造器
-        Page pageInfo = new Page(page,pageSize);
-        //构造条件构造器
-        final LambdaQueryWrapper<User> queryWrapper =  new LambdaQueryWrapper<>();
-        //添加过滤条件
-        //什么时候name会为空？首次访问列表页面时
-        queryWrapper.like(StringUtils.isNotEmpty(name),User::getName,name);
-        //添加排序条件
-        //queryWrapper.orderByDesc(user);
-        //执行查询
-        userService.page(pageInfo,queryWrapper);
-        return R.success(pageInfo);
+        //1.构造分页构造器对象
+        Page<User> pageInfo = new Page<>(page,pageSize);
+        Page<Userdto> userdtoPage = new Page<>();
+        //2.创建条件构造器对象
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper();
+
+        //3.添加过滤条件
+        queryWrapper.like(name != null, User::getName, name);
+
+        //5.执行分页查询
+        userService.page(pageInfo, queryWrapper);
+        //对象拷贝,
+        BeanUtils.copyProperties(pageInfo, userdtoPage,"records");
+        //下面的代码单独设置records
+        final List<User> records = pageInfo.getRecords();
+        final List<Userdto> list = records.stream().map((item) -> {
+            Userdto userdto = new Userdto();
+            BeanUtils.copyProperties(item, userdto);
+            LambdaQueryWrapper<Post> queryWrapper1 = new LambdaQueryWrapper<>();
+            queryWrapper1.eq(Post::getCreateUser,userdto.getUid());
+            queryWrapper1.eq(Post::getStatus,1);
+            int count = postService.count(queryWrapper1);
+            userdto.setUnpassNum(count);
+            return userdto;
+        }).collect(Collectors.toList());
+
+        userdtoPage.setRecords(list);
+
+        return R.success(userdtoPage);
     }
+
+
+    /**
+     * 批量停用/启用用户
+     * @param ids
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("批量停用/启用用户")
+    @ApiImplicitParams({
+            @ApiImplicitParam( name = "status", value = "修改状态", required = true),
+            @ApiImplicitParam(name = "ids", value = "修改状态用户id", required = true)})
+    public R<String> status(@PathVariable("status") Integer status, @RequestParam List<Long> ids){
+        LambdaUpdateWrapper<User> Wrapper = new LambdaUpdateWrapper<>();
+        Wrapper.in(User::getUid, ids);
+        Wrapper.set(User::getStatus,status);
+        userService.update(Wrapper);
+
+        return R.success("批量修改成功");
+    }
+
 }
