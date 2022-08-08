@@ -1,4 +1,4 @@
-package com.example.dmsapp.mapper;
+package com.example.drive.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.dmsapp.entity.Category;
